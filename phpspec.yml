@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Sistema
+        psr4_prefix: Sistema
+        src_path: app
