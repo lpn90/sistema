@@ -2,7 +2,7 @@
 
 namespace Sistema\Http\Controllers\Auth;
 
-use Sistema\User;
+use Sistema\Modesl\User;
 use Validator;
 use Sistema\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
