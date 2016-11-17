@@ -4,6 +4,7 @@ namespace Sistema\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Sistema\Repositories\ClientRepository;
+use Sistema\Services\ClientService;
 
 class ClientController extends Controller
 {
@@ -13,12 +14,18 @@ class ClientController extends Controller
     private $repository;
 
     /**
+     * @var ClientService
+     */
+    private $service;
+
+    /**
      * ClientController constructor.
      * @param $repository
      */
-    public function __construct(ClientRepository $repository)
+    public function __construct(ClientRepository $repository, ClientService $service)
     {
         $this->repository = $repository;
+        $this->service = $service;
     }
 
 
@@ -40,7 +47,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->repository->create($request->all());
+        return $this->service->create($request->all());
     }
 
     /**
@@ -63,7 +70,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-       return $this->repository->update($request->all(),$id);
+       return $this->service->update($request->all(),$id);
     }
 
     /**
