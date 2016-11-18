@@ -3,18 +3,19 @@
 namespace Sistema\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Sistema\Repositories\ClientRepository;
-use Sistema\Services\ClientService;
+use Sistema\Repositories\ProjectRepository;
+use Sistema\Services\ProjectService;
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
+
     /**
-     * @var ClientRepository
+     * @var ProjectRepository
      */
     private $repository;
 
     /**
-     * @var ClientService
+     * @var ProjectService
      */
     private $service;
 
@@ -22,13 +23,12 @@ class ClientController extends Controller
      * ClientController constructor.
      * @param $repository
      */
-    public function __construct(ClientRepository $repository, ClientService $service)
+    public function __construct(ProjectRepository $repository, ProjectService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
     }
-
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +38,7 @@ class ClientController extends Controller
     {
         return $this->repository->all();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -58,7 +58,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->find($id);
+        return $this->repository->with('user')->with('client')->find($id);
     }
 
     /**

@@ -27,5 +27,15 @@ class SistemaRepositoryProvider extends ServiceProvider
           \Sistema\Repositories\ClientRepository::class,
             \Sistema\Repositories\ClientRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \Sistema\Repositories\ProjectRepository::class,
+            \Sistema\Repositories\ProjectRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            \Sistema\Repositories\ProjectNoteRepository::class,
+            \Sistema\Repositories\ProjectNoteRepositoryEloquent::class
+        );
     }
 }

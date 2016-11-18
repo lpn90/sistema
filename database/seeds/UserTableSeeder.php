@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \Sistema\Entities\User;
 
-class ClientTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,7 @@ class ClientTableSeeder extends Seeder
      */
     public function run()
     {
-        /*\Sistema\Entities\Client::truncate();*/
-        factory(\Sistema\Entities\Client::class, 10)->create();
+        /*User::truncate();*/
+        factory(User::class, 10)->create();
     }
 }
