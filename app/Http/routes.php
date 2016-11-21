@@ -20,14 +20,16 @@ Route::post('oauth/access_token', function (){
     return Response::json(Authorizer::issueAccessToken());
 });
 
+
 Route::group(['middleware' => 'oauth'], function (){
     /*Rotas referentes aos Clients*/
     Route::resource('client', 'ClientController', ['except' => ['create', 'edit']]);
+    
+    /*Rotas referentes aos Projects*/
+    Route::resource('project', 'ProjectController', ['except' => ['create', 'edit']]);
+    
 
     Route::group(['prefix' => 'project'], function () {
-        /*Rotas referentes aos Projects*/
-        Route::resource('', 'ProjectController', ['except' => ['create', 'edit']]);
-
         /*Rotas referentes aos Projects Notes*/
         Route::get('{id}/note', 'ProjectNotesController@index');
         Route::post('{id}/note', 'ProjectNotesController@store');
@@ -36,7 +38,6 @@ Route::group(['middleware' => 'oauth'], function (){
         Route::delete('note/{noteId}', 'ProjectNotesController@destroy');
     });
 });
-
 
 
 
