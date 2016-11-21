@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => Sistema\User::class,
+    'model' => Sistema\Entities\User::class,
 
     /*
     |--------------------------------------------------------------------------

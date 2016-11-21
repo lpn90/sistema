@@ -84,10 +84,11 @@ class ProjectNotesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * 
+     * @param $noteId
+     * @return int
+     * @internal param int $id
      */
-    public function destroy($id, $noteId)
+    public function destroy($noteId)
     {
         return $this->repository->delete($noteId);
     }
