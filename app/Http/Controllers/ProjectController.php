@@ -36,7 +36,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
+        return $this->repository->all();
+        //return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
     }
     
     /**
@@ -58,9 +59,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        if($this->checkProjectPermission($id) == false){
+       /* if($this->checkProjectPermission($id) == false){
             return ['error' => "Access Forbidden"];
-        }
+        }*/
 
         return $this->repository->with('owner')->with('client')->with('members')->find($id);
     }
