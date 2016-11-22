@@ -10,6 +10,7 @@ namespace Sistema\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Sistema\Entities\Project;
+use Sistema\Presenters\ProjectPresenter;
 
 class ProjectRepositoryEloquent extends BaseRepository implements ProjectRepository
 {
@@ -45,4 +46,11 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         }
         return false;
     }
+    
+    public function presenter()
+    {
+        return ProjectPresenter::class;
+    }
+
+
 }

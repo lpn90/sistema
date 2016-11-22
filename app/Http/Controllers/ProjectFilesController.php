@@ -3,10 +3,13 @@
 namespace Sistema\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
 use Sistema\Repositories\ProjectRepository;
 use Sistema\Services\ProjectService;
 
-class ProjectController extends Controller
+class ProjectFilesController extends Controller
 {
 
     /**
@@ -47,7 +50,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->create($request->all());
+        $file = $request->file('file');
+        $extension = $file->getClientOriginalExtension();
+
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+        $data['extension'] = $extension;
+        $data['project_id'] = $request->project_id;
+        $data['file'] = $file;
+        
+        $this->service->createFile($data);
     }
 
     /**
