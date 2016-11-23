@@ -2,6 +2,9 @@
 
 namespace Sistema\Http\Controllers;
 
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Sistema\Repositories\ProjectRepository;
 use Sistema\Services\ProjectService;
@@ -36,7 +39,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
+        //return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
+        return $this->repository->all();
     }
     
     /**
@@ -58,11 +62,17 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        if($this->checkProjectPermission($id) == false){
-            return ['error' => "Access Forbidden"];
-        }
+//        if($this->checkProjectPermission($id) == false){
+//            return ['error' => "Access Forbidden"];
+//        }
 
-        return $this->repository->with('owner')->with('client')->with('members')->find($id);
+        try{
+            return $this->repository->with('owner')->with('client')->with('members')->find($id);
+        } catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Projeto não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao pesquisar o projeto.'];
+        } 
     }
 
     /**
@@ -74,11 +84,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-       if($this->checkProjectPermission($id) == false){
-           return ['error' => "Access Forbidden"];
-       }
+//       if($this->checkProjectPermission($id) == false){
+//           return ['error' => "Access Forbidden"];
+//       }
 
-       return $this->service->update($request->all(),$id);
+        try{
+            return $this->service->update($request->all(),$id);
+        }   catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Projeto não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao atualizar o projeto.'];
+        }
     }
 
     /**
@@ -89,12 +105,23 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        if($this->checkProjectOwner($id) == false){
-            return ['error' => "Access Forbidden"];
-        }
+//        if($this->checkProjectOwner($id) == false){
+//            return ['error' => "Access Forbidden"];
+//        }
 
-        return $this->repository->delete($id);
+        try {
+            $this->repository->find($id)->delete();
+            return ['success'=>true, 'Projeto deletado com sucesso!'];
+        } catch (QueryException $e) {
+            return ['error'=>true, 'Projeto não pode ser apagado pois existe um ou mais clientes vinculados a ele.'];
+        } catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Projeto não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao excluir o projeto.'];
+        }
     }
+
+    /*Validações */
 
     private function checkProjectOwner($projectId)
     {

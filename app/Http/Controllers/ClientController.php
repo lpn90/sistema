@@ -2,6 +2,9 @@
 
 namespace Sistema\Http\Controllers;
 
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Sistema\Repositories\ClientRepository;
 use Sistema\Services\ClientService;
@@ -58,7 +61,14 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->find($id);
+        try{
+            return $this->repository->find($id);
+        }catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Cliente não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao pesquisar o cliente.'];
+        }
+
     }
 
     /**
@@ -70,7 +80,14 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-       return $this->service->update($request->all(),$id);
+        try{
+            return $this->service->update($request->all(),$id);
+        } catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Cliente não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao atualizar o cliente.'];
+        }
+
     }
 
     /**
@@ -81,6 +98,15 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        return $this->repository->delete($id);
+        try {
+            $this->repository->find($id)->delete();
+            return ['success'=>true, 'Cliente deletado com sucesso!'];
+        } catch (QueryException $e) {
+            return ['error'=>true, 'Cliente não pode ser apagado pois existe um ou mais projetos vinculados a ele.'];
+        } catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Cliente não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao excluir o cliente.'];
+        }
     }
 }

@@ -21,7 +21,7 @@ Route::post('oauth/access_token', function (){
 });
 
 
-Route::group(['middleware' => 'oauth'], function (){
+//Route::group(['middleware' => 'oauth'], function (){
     /*Rotas referentes aos Clients*/
     Route::resource('client', 'ClientController', ['except' => ['create', 'edit']]);
 
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'oauth'], function (){
         /*Rotas referentes aos Projects Files*/
         Route::post('{id}/file', 'ProjectFilesController@store');
     });
-});
+//});
 
 
 
