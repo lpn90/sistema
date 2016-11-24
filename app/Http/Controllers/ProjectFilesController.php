@@ -3,8 +3,6 @@
 namespace Sistema\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 use Sistema\Repositories\ProjectRepository;
 use Sistema\Services\ProjectService;

@@ -39,6 +39,16 @@ Route::post('oauth/access_token', function (){
 
         /*Rotas referentes aos Projects Files*/
         Route::post('{id}/file', 'ProjectFilesController@store');
+
+        /*Rotas referentes aos Projects Tasks*/
+        Route::get('{id}/task', 'ProjectTasksController@index');
+        Route::post('{id}/task', 'ProjectTasksController@store');
+        Route::get('{id}/task/{taskId}', 'ProjectTasksController@show');
+        Route::put('{id}/task/{taskId}', 'ProjectTasksController@update');
+        Route::delete('task/{taskId}', 'ProjectTasksController@destroy');
+
+        /*Rotas referentes aos Projects Files*/
+        Route::get('{id}/members', 'ProjectController@members');
     });
 //});
 

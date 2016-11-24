@@ -121,6 +121,21 @@ class ProjectController extends Controller
         }
     }
 
+    public function members($id)
+    {
+//        if($this->checkProjectPermission($id) == false){
+//            return ['error' => "Access Forbidden"];
+//        }
+
+        try{
+            return $this->service->members($id);
+        } catch (ModelNotFoundException $e) {
+            return ['error'=>true, 'Projeto não encontrado.'];
+        } catch (Exception $e) {
+            return ['error'=>true, 'Ocorreu algum erro ao pesquisar o projeto.'];
+        }
+    }
+
     /*Validações */
 
     private function checkProjectOwner($projectId)

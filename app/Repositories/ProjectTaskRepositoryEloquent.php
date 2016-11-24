@@ -4,15 +4,15 @@ namespace Sistema\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Sistema\Repositories\ProjectNoteRepository;
-use Sistema\Entities\ProjectNote;
-use Sistema\Validators\ProjectNoteValidator;
+use Sistema\Repositories\ProjectTaskRepository;
+use Sistema\Entities\ProjectTask;
+use Sistema\Validators\ProjectTaskValidator;
 
 /**
- * Class ProjectNoteRepositoryEloquent
+ * Class ProjectTaskRepositoryEloquent
  * @package namespace Sistema\Repositories;
  */
-class ProjectNoteRepositoryEloquent extends BaseRepository implements ProjectNoteRepository
+class ProjectTaskRepositoryEloquent extends BaseRepository implements ProjectTaskRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +21,7 @@ class ProjectNoteRepositoryEloquent extends BaseRepository implements ProjectNot
      */
     public function model()
     {
-        return ProjectNote::class;
+        return ProjectTask::class;
     }
 
     /**
@@ -32,7 +32,7 @@ class ProjectNoteRepositoryEloquent extends BaseRepository implements ProjectNot
     public function validator()
     {
 
-        return ProjectNoteValidator::class;
+        return ProjectTaskValidator::class;
     }
 
 
