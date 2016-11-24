@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 	@if(Config::get('app.debug'))
-		<link href="{{ asset('biuld/css/vendor/bootstrap.min.css') }}" rel="stylesheet" />
-		<link href="{{ asset('biuld/css/vendor/bootstrap-theme.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/bootstrap.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/bootstrap-theme.min.css') }}" rel="stylesheet" />
 	@else
 		<link href="{{ elixir('css/all.css') }}" rel="stylesheet" />
 	@endif
@@ -61,14 +61,14 @@
 
 	<!-- Scripts -->
 	@if(Config::get('app.debug'))
-		<script src="{{ asset('biuld/js/vendor/jquery.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/angular.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/angular-route.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/angular-resource.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/angular-animate.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/angular-messages.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/ui-bootstrap.min.js') }}"></script>
-		<script src="{{ asset('biuld/js/vendor/navbar.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/jquery.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-route.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-resource.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-animate.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-messages.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/navbar.min.js') }}"></script>
 	@else
 		<script src="{{ elixir('js/all.js') }}"></script>
 	@endif
