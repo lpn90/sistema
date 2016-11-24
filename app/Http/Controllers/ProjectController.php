@@ -39,7 +39,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
+        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
         return $this->repository->all();
     }
     
@@ -62,9 +62,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-//        if($this->checkProjectPermission($id) == false){
-//            return ['error' => "Access Forbidden"];
-//        }
+        if($this->checkProjectPermission($id) == false){
+            return ['error' => "Access Forbidden"];
+        }
 
         try{
             return $this->repository->with('owner')->with('client')->with('members')->find($id);
@@ -84,9 +84,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-//       if($this->checkProjectPermission($id) == false){
-//           return ['error' => "Access Forbidden"];
-//       }
+       if($this->checkProjectPermission($id) == false){
+           return ['error' => "Access Forbidden"];
+       }
 
         try{
             return $this->service->update($request->all(),$id);
@@ -105,9 +105,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-//        if($this->checkProjectOwner($id) == false){
-//            return ['error' => "Access Forbidden"];
-//        }
+        if($this->checkProjectOwner($id) == false){
+            return ['error' => "Access Forbidden"];
+        }
 
         try {
             $this->repository->find($id)->delete();

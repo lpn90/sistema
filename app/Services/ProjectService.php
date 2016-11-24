@@ -8,9 +8,7 @@
 namespace Sistema\Services;
 
 
-use Sistema\Repositories\ClientRepository;
 use Sistema\Repositories\ProjectRepository;
-use Sistema\Validators\ClientValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 use Illuminate\Filesystem\Filesystem;
