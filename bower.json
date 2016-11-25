@@ -1,12 +1,15 @@
 {
   "name": "Sistema Pintech IT Solutions",
-  "description": "",
-  "main": "",
+  "version": "0.0.0",
+  "description": "SIG Pintech",
+  "moduleType": [
+    "amd"
+  ],
   "license": "MIT",
   "authors": [
     "Pintech IT Solutions <contato@pintech.com.br>"
   ],
-  "homepage": "https://github.com/lpn90/sistema",
+  "homepage": "http://pintech.com.br",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -16,13 +19,14 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.4.1",
-    "angular-route": "1.4.1",
-    "angular-resource": "1.4.1",
-    "angular-animate": "1.4.1",
-    "angular-messages": "1.4.1",
+    "angular": "1.4.2",
+    "angular-animate": "1.4.2",
     "angular-bootstrap": "0.13.0",
+    "angular-messages": "1.4.2",
+    "angular-oauth2": "~4.1.0",
+    "angular-route": "1.4.2",
+    "angular-resource": "1.4.2",
     "angular-strap": "2.0.4",
-    "bootstrap": "3.3.5"
+    "bootstrap": "~3.3.5"
   }
 }
