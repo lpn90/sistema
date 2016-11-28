@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Sistema\Entities\ProjectTask;
 
-class ProjectTableSeeder extends Seeder
+class ProjectTaskTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
