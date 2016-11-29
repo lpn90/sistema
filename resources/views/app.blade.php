@@ -6,8 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 	@if(Config::get('app.debug'))
-		<link href="{{ asset('build/css/vendor/bootstrap.min.css') }}" rel="stylesheet" />
-		<link href="{{ asset('build/css/vendor/bootstrap-theme.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/app.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/components.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/flaticon.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/font-awesome.css') }}" rel="stylesheet" />
 		<link href="{{ asset('build/css/vendor/angular-motion.min.css') }}" rel="stylesheet" />
 	@else
 		<link href="{{ elixir('css/all.css') }}" rel="stylesheet" />
@@ -83,6 +85,9 @@
 		<script src="{{ asset('build/js/controllers/login.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/home.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/client/clientList.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/client/clientNew.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/client/clientEdit.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/client/clientRemove.js') }}"></script>
 
 		<!-- SERVICES -->
 		<script src="{{ asset('build/js/services/client.js') }}"></script>
