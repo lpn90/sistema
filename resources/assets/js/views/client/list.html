@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-9 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Listagem de Clientes</div>
                 <div class="panel-body">
@@ -21,10 +21,10 @@
                             <th>{{ client.email }}</th>
                             <th>{{ client.phone }}</th>
                             <th>
-                                <a ng-href="#/clients/{{ client.id }}/edit" class="btn btn-success btn-xs" >
-                                    Editar
-                                </a>  <a ng-href="#/clients/{{ client.id }}/remove" class="btn btn-danger btn-xs" >
-                                    Excluir
+                                <a ng-href="#/clients/{{ client.id }}/edit" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar">
+                                    <i class="fa fa-edit"></i>
+                                </a>  <a ng-href="#/clients/{{ client.id }}/remove" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+                                <i class="fa fa-minus-circle"></i>
                                 </a>
                             </th>
                         </tr>

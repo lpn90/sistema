@@ -80,6 +80,7 @@
 		<script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}"></script>
 
 		<script src="{{ asset('build/js/app.js') }}"></script>
+		<script src="{{ asset('build/js/custom.js') }}"></script>
 
 		<!-- CONTROLERS -->
 		<script src="{{ asset('build/js/controllers/login.js') }}"></script>
