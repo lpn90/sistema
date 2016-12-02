@@ -1,4 +1,6 @@
-## Laravel PHP Framework
+##SISTEMA
+
+## Laravel PHP Framework + AngularJS
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -8,18 +10,18 @@
 
 ## Backend
 
-Fase 1
+-> Fase 1
 
-*Clients
+* Clients
 
 Nessa fase do projeto, você deverá apresentar um CRUD completo de nosso model Client.
 Sempre lembrando que toda a informação resultante deverá ser exibida para o usuário final como um json.
 Não se esqueça de utilizar corretamente os verbos HTTP.
 
-Fase 2
+-> Fase 2
 
 
-*Repositores / Services
+* Repositores / Services
 
 Agora que já falamos sobre os conceitos de Services e Repositories:
 
@@ -40,10 +42,10 @@ Agora que já falamos sobre os conceitos de Services e Repositories:
 3) Crie o Repository e Service referente a entidade Project, bem como suas validações, gerando um CRUD completo
 4) Na listagem dos dados, traga também as informações sobre o owner_id e client_id (dica: utilize o método do repository: "with")
 
-Fase 3
+-> Fase 3
 
 
-Tasks e Members
+* Tasks e Members
 
 Agora que você está entendendo o processo de relacionamento e disponibilização das APIs relacionadas a Projects, faça:
 
@@ -73,9 +75,27 @@ No ProjectService, crie dois métodos:
 
 Crie um endpoint (rota): /project/{id}/members para ter acesso a todos os membros de um projeto.
 
+
+-> Fase 4
+
+
+* Finalizando backend
+
+Agora que já temos nossa estrutura montada em relação ao projeto, precisamos finalizar a parte "base" do backend para que possamos iniciar o processo de integração com o AngularJS.
+
+Faça:
+
+    Aplique o processo de Autorização em todos os endpoints de nossa API
+    Crie Presenters e Transformers em todos os repositories (deixe exibindo todos os dados por padrão - isso poderá ser mudado quando formos conversar com o Angular)
+    Termine o processo de inclusão de arquivos / upload validando possíveis tipos de erros
+    Processo de remoção de arquivos do projeto
+    Crie um seeder chamado OAuthClientSeeder para gerar pelo menos um client na tabela oauth_clients
+
+
+
 ## Frontend
 
-Fase 1
+-> Fase 1
 
 
 * Configurando o ambiente de desenvolvimento
@@ -84,7 +104,7 @@ Agora que você já viu todo processo de preparação do nosso front-end, você 
 É preciso que ao digitarmos "gulp watch-dev", ele realize todas as tarefas descritas para o desenvolvimento e quando
 digitarmos "gulp default" ou somente "gulp", o mesmo gere os arquivos all.js e all.css que será o resultado da união dos arquivos correspondentes.
 
-Fase 2
+-> Fase 2
 
 * Realizando autenticação
 
