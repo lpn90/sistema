@@ -60,9 +60,9 @@ class ProjectNotesController extends Controller
      * @internal param int $id
      *
      */
-    public function show($id, $noteId)
+    public function show($id, $idNote)
     {
-        return $this->repository->findWhere(['project_id'=> $id, 'id' => $noteId]);
+        return $this->repository->findWhere(['project_id'=> $id, 'id' => $idNote]);
     }
 
     /**
@@ -73,10 +73,10 @@ class ProjectNotesController extends Controller
      * @param $noteId
      * @return array|mixed
      */
-    public function update(Request $request, $id, $noteId)
+    public function update(Request $request, $id, $idNote)
     {
 
-        return $this->service->update($request->all(),$noteId);
+        return $this->service->update($request->all(),$idNote);
     }
 
 
@@ -87,8 +87,8 @@ class ProjectNotesController extends Controller
      * @return int
      * @internal param int $id
      */
-    public function destroy($noteId)
+    public function destroy($idNote)
     {
-        return $this->repository->delete($noteId);
+        return $this->repository->delete($idNote);
     }
 }

@@ -20,7 +20,7 @@ class ProjectNoteTransformer extends TransformerAbstract
             'id' => (int)$projectNote->id,
             'title' => $projectNote->title,
             'note' => $projectNote->note,
-            'project_id' => $projectNote->project->id,
+            'project_id' => $projectNote->project_id,
         ];
     }
 

@@ -15,11 +15,11 @@
                         <tbody>
                         <tr ng-repeat="o in projectNotes">
                             <th>{{ o.title }}</th>
-                            <th>{{ o.note }}</th>
+                            <th>{{ o.note | limitTo: 40 }} ...</th>
                             <th>
-                                <a ng-href="#/projects/{{ o.project_id }}/notes/{{ o.id }}/edit" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar">
+                                <a ng-href="#/project/{{ o.project_id }}/notes/{{ o.id }}/edit" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar">
                                     <i class="fa fa-edit"></i>
-                                </a>  <a ng-href="#/projects/{{ o.project_id }}/notes{{ o.id }}/remove" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+                                </a>  <a ng-href="#/project/{{ o.project_id }}/notes{{ o.id }}/remove" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
                                 <i class="fa fa-minus-circle"></i>
                                 </a>
                             </th>
