@@ -12,7 +12,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Sistema\Entities\ProjectFile;
 use Sistema\Validators\ProjectFileValidator;
 
-class ProjectFileRepositoryEloquent extends BaseRepository implements ProjectRepository
+class ProjectFileRepositoryEloquent extends BaseRepository implements ProjectTaskRepository
 {
     
     public function model()

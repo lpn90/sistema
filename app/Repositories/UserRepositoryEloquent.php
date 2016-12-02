@@ -11,7 +11,7 @@ namespace Sistema\Repositories;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Sistema\Entities\User;
 
-class UserRepositoryEloquent extends BaseRepository implements ClientRepository
+class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
     public function model()
     {
