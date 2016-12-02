@@ -64,9 +64,9 @@ class ClientController extends Controller
         try{
             return $this->repository->find($id);
         }catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Cliente não encontrado.'];
+            return ['error'=>true, 'message'=>'Cliente não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao pesquisar o cliente.'];
+            return ['error'=>true, 'message'=>'Ocorreu algum erro ao pesquisar o cliente.'];
         }
 
     }
@@ -83,9 +83,9 @@ class ClientController extends Controller
         try{
             return $this->service->update($request->all(),$id);
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Cliente não encontrado.'];
+            return ['error'=>true, 'message'=>'Cliente não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao atualizar o cliente.'];
+            return ['error'=>true, 'message'=>'Ocorreu algum erro ao atualizar o cliente.'];
         }
 
     }
@@ -100,13 +100,13 @@ class ClientController extends Controller
     {
         try {
             $this->repository->find($id)->delete();
-            return ['success'=>true, 'Cliente deletado com sucesso!'];
+            return ['error'=>false, 'message'=>'Cliente deletado com sucesso!'];
         } catch (QueryException $e) {
-            return ['error'=>true, 'Cliente não pode ser apagado pois existe um ou mais projetos vinculados a ele.'];
+            return ['error'=>true, 'message'=>'Cliente não pode ser apagado pois existe um ou mais projetos vinculados a ele.'];
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Cliente não encontrado.'];
+            return ['error'=>true, 'message'=>'Cliente não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao excluir o cliente.'];
+            return ['error'=>true, 'message'=>'Ocorreu algum erro ao excluir o cliente.'];
         }
     }
 }

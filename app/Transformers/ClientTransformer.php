@@ -13,11 +13,20 @@ use League\Fractal\TransformerAbstract;
 
 class ClientTransformer extends TransformerAbstract
 {
+    /**
+    * Class ClientTransformer
+    * @package Sistema\Transformers
+    * Transform the \Client entity
+    * @param Client $client
+    *
+    * @return array
+    */
 
     public function transform(Client $client)
     {
         return [
-            'client_id' => $client->id,
+
+            'id' => $client->id,
             'name' => $client->name,
             'responsible' => $client->responsible,
             'email' => $client->email,
@@ -26,5 +35,4 @@ class ClientTransformer extends TransformerAbstract
             'obs' => $client->obs,
         ];
     }
-
 }

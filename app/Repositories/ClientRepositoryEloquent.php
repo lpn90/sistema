@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: Leonardo
  * Date: 17/11/2016
  * Time: 15:35
@@ -19,7 +18,7 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     {
         return Client::class;
     }
-
+    
     public function presenter()
     {
         return ClientPresenter::class;
