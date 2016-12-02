@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="AngularJS" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/resources/bower_components/angular-animate/angular-animate.js" />
+        <item url="file://$PROJECT_DIR$/resources/bower_components/angular/angular.js" />
+        <item url="file://$PROJECT_DIR$/resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/resources/bower_components/angular-bootstrap/ui-bootstrap.min.js" />
+      <root url="file://$PROJECT_DIR$/resources/bower_components/angular-animate/angular-animate.js" />
+      <root url="file://$PROJECT_DIR$/resources/bower_components/angular/angular.js" />
+      <root url="file://$PROJECT_DIR$/resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
