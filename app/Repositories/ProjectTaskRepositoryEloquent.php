@@ -4,8 +4,8 @@ namespace Sistema\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Sistema\Repositories\ProjectTaskRepository;
 use Sistema\Entities\ProjectTask;
+use Sistema\Presenters\ProjectTaskPresenter;
 use Sistema\Validators\ProjectTaskValidator;
 
 /**
@@ -42,5 +42,10 @@ class ProjectTaskRepositoryEloquent extends BaseRepository implements ProjectTas
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function presenter()
+    {
+        return ProjectTaskPresenter::class;
     }
 }

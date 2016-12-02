@@ -39,6 +39,7 @@ Route::group(['middleware' => 'oauth'], function (){
 
         /*Rotas referentes aos Projects Files*/
         Route::post('{id}/file', 'ProjectFilesController@store');
+        Route::delete('{id}/file/{fileId}', 'ProjectFilesController@destroy');
 
         /*Rotas referentes aos Projects Tasks*/
         Route::get('{id}/task', 'ProjectTasksController@index');

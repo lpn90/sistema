@@ -10,7 +10,6 @@ namespace Sistema\Services;
 
 use Sistema\Repositories\ProjectRepository;
 use Prettus\Validator\Exceptions\ValidatorException;
-
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Sistema\Validators\ProjectValidator;
@@ -81,15 +80,15 @@ class ProjectService
         }
 
     }
-    
-    public function createFile(array $data)
+
+    public function listFile(array $data)
     {
         $project = $this->repository->skipPresenter()->find($data['project_id']);
         $projectFile = $project->files()->create($data);
 
         $this->storage->put($projectFile->id.".".$data['extension'], $this->filesystem->get($data['file']));
     }
-
+    
     public function addMember(array $data)
     {
         $project = $this->repository->skipPresenter()->find($data['project_id']);

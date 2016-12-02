@@ -8,7 +8,7 @@ use Sistema\Services\ProjectNoteService;
 
 
 
-class ProjectNotesController extends Controller
+class ProjectNoteController extends Controller
 {
 
     /**
