@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Exclusão de Cliente</div>
+                <div class="panel-heading">Exclusão de Nota de Projeto</div>
                 <div class="panel-body">
                     <div class="alert alert-danger" ng-show="error.error">
                         <strong>Whoops!</strong> Ocorreram erros.<br><br>
@@ -11,16 +11,15 @@
                     <p ng-show="!error.error">Deseja realmente Excluir este Cliente?</p>
 
                     <ul ng-show="!error.error">
-                        <li><strong>Name: </strong>{{ client.name }}</li>
-                        <li><strong>E-mail: </strong>{{ client.email }}</li>
-                        <li><strong>Telefone: </strong>{{ client.phone }}</li>
+                        <li><strong>Title: </strong>{{ projectNote.title }}</li>
+                        <li><strong>Nota: </strong>{{ projectNote.note }}</li>
                     </ul>
 
 
                     <div class="form-group" ng-show="!error.error">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="button" class="btn btn-danger" ng-click="remove()">Excluir</button>
-                            <a ng-href="#/clients" type="button" class="btn btn-default">Cancelar</a>
+                            <a ng-href="#/project/{{ projectNote.project_id }}/notes" type="button" class="btn btn-default">Cancelar</a>
                         </div>
                     </div>
                     <div class="form-group" ng-show="error.error">

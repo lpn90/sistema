@@ -31,7 +31,7 @@ class ProjectNotesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function index($id)
@@ -43,7 +43,7 @@ class ProjectNotesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Request $request
-     *
+     *@param int $id
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
@@ -55,22 +55,28 @@ class ProjectNotesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $noteId
+     * @param int $noteId
      * @return \Illuminate\Http\Response
      * @internal param int $id
      *
      */
     public function show($id, $idNote)
     {
-        return $this->repository->findWhere(['project_id'=> $id, 'id' => $idNote]);
+        $result = $this->repository->findWhere(['project_id'=> $id, 'id' => $idNote]);
+        if(isset($result['data']) && count($result['data'])==1){
+            $result = [
+                'data' => $result['data'][0]
+            ];
+        }
+        return $result;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  Request $request
-     * @param $id
-     * @param $noteId
+     * @param int $id
+     * @param int $noteId
      * @return array|mixed
      */
     public function update(Request $request, $id, $idNote)
@@ -83,12 +89,15 @@ class ProjectNotesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param $noteId
      * @return int
-     * @internal param int $id
+     * @internal param int $idNote
      */
     public function destroy($idNote)
     {
-        return $this->repository->delete($idNote);
+        $this->repository->delete($idNote);
+        return [
+            'error' => false,
+            'message' => 'Nota excluida com Sucesso.'
+        ];
     }
 }
