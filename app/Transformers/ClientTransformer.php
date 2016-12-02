@@ -26,7 +26,7 @@ class ClientTransformer extends TransformerAbstract
     {
         return [
 
-            'id' => $client->id,
+            'id' => (int)$client->id,
             'name' => $client->name,
             'responsible' => $client->responsible,
             'email' => $client->email,

@@ -9,7 +9,7 @@ use Sistema\Repositories\ProjectTaskRepository;
 use Sistema\Services\ProjectTaskService;
 use Sistema\Validators\ProjectTaskValidator;
 
-class ProjectTaskController extends Controller
+class ProjectTasksController extends Controller
 {
 
     /**

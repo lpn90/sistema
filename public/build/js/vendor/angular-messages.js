@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
- * @license AngularJS v1.4.1
-=======
  * @license AngularJS v1.4.2
->>>>>>> frontend
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -520,9 +516,6 @@ angular.module('ngMessages', [])
 
      return {
        restrict: 'AE',
-<<<<<<< HEAD
-       require: '^^
-=======
        require: '^^ngMessages', // we only require this for validation sake
        link: function($scope, element, attrs) {
          var src = attrs.ngMessagesInclude || attrs.src;
@@ -683,4 +676,3 @@ function ngMessageDirectiveFactory(restrict) {
 
 
 })(window, window.angular);
->>>>>>> frontend

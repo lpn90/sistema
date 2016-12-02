@@ -17,7 +17,7 @@ class ProjectFileTransformer extends TransformerAbstract
     public function transform(ProjectFile $projectFile)
     {
         return [
-            'file_id' => $projectFile->id,
+            'id' => (int) $projectFile->id,
             'name' => $projectFile->name,
             'description' => $projectFile->description,
             'extension' => $projectFile->extension,

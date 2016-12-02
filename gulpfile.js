@@ -5,7 +5,7 @@ var elixir = require('laravel-elixir'),
 
 var config = {
     assets_path: './resources/assets',
-    build_path:  './public/build',
+    build_path: './public/build',
 };
 
 config.bower_path = config.assets_path + '/../bower_components';
@@ -91,19 +91,19 @@ gulp.task('clean-build-folder', function () {
 
 gulp.task('default', ['clean-build-folder'], function () {
     gulp.start('copy-html', 'copy-fonts', 'copy-images');
-    elixir(function(mix) {
+    elixir(function (mix) {
         mix.styles(config.vendor_path_css.concat([config.assets_path + '/css/**/*.css']),
-            'public/css/all.css',config.assets_path);
+            'public/css/all.css', config.assets_path);
         mix.scripts(config.vendor_path_js.concat([config.assets_path + '/js/**/*.js']),
-            'public/js/all.js',config.assets_path);
-        mix.version(['js/all.js','css/all.css']);
+            'public/js/all.js', config.assets_path);
+        mix.version(['js/all.js', 'css/all.css']);
     });
 });
 
-gulp.task('watch-dev',['clean-build-folder'], function () {
+gulp.task('watch-dev', ['clean-build-folder'], function () {
     liveReload.listen();
     gulp.start('copy-styles', 'copy-scripts', 'copy-html', 'copy-fonts', 'copy-images');
     gulp.watch(config.assets_path + '/**', [
-        'copy-styles', 'copy-scripts','copy-html', 'copy-fonts', 'copy-images'
+        'copy-styles', 'copy-scripts', 'copy-html', 'copy-fonts', 'copy-images'
     ]);
 });

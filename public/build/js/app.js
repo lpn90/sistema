@@ -1,10 +1,10 @@
 /**
  * Created by Leonardo on 24/11/2016.
  */
-var app = angular.module('app', ['ngRoute' ,'angular-oauth2', 'app.controllers', 'app.services']);
+var app = angular.module('app', ['ngRoute', 'angular-oauth2', 'app.controllers', 'app.services']);
 
-angular.module('app.controllers',['angular-oauth2', 'ngMessages']);
-angular.module('app.services',['ngResource']);
+angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);
+angular.module('app.services', ['ngResource']);
 
 app.provider('appConfig', function () {
     var config = {
@@ -20,33 +20,64 @@ app.provider('appConfig', function () {
 });
 
 app.config([
-    '$routeProvider', 'OAuthProvider', 'OAuthTokenProvider', 'appConfigProvider',
-    function ($routeProvider, OAuthProvider, OAuthTokenProvider, appConfigProvider) {
-    $routeProvider
-        .when('/login', {
-            templateUrl: 'build/views/login.html',
-            controller:  'LoginController'
-        })
-        .when('/home', {
-            templateUrl: 'build/views/home.html',
-            controller:  'HomeController'
-        })
-        .when('/clients', {
-            templateUrl: 'build/views/client/list.html',
-            controller:  'ClientListController'
-        })
-        .when('/clients/new', {
-            templateUrl: 'build/views/client/new.html',
-            controller:  'ClientNewController'
-        })
-        .when('/clients/:id/edit', {
-            templateUrl: 'build/views/client/edit.html',
-            controller:  'ClientEditController'
-        })
-        .when('/clients/:id/remove', {
-            templateUrl: 'build/views/client/remove.html',
-            controller:  'ClientRemoveController'
-        });
+    '$routeProvider', 'OAuthProvider', 'OAuthTokenProvider', 'appConfigProvider', '$httpProvider',
+    function ($routeProvider, OAuthProvider, OAuthTokenProvider, appConfigProvider, $httpProvider) {
+        $httpProvider.defaults.transformResponse = function (data, headers) {
+            var headersGetter = headers();
+            if (headersGetter['content-type'] == 'application/json' || headersGetter['content-type'] == 'text/json') {
+                var dataJson = JSON.parse(data);
+                if (dataJson.hasOwnProperty('data')) {
+                    dataJson = dataJson.data;
+                }
+                return dataJson;
+            }
+            return data;
+        };
+        $routeProvider
+            .when('/login', {
+                templateUrl: 'build/views/login.html',
+                controller: 'LoginController'
+            })
+            .when('/home', {
+                templateUrl: 'build/views/home.html',
+                controller: 'HomeController'
+            })
+            .when('/clients', {
+                templateUrl: 'build/views/client/list.html',
+                controller: 'ClientListController'
+            })
+            .when('/clients/new', {
+                templateUrl: 'build/views/client/new.html',
+                controller: 'ClientNewController'
+            })
+            .when('/clients/:id/edit', {
+                templateUrl: 'build/views/client/edit.html',
+                controller: 'ClientEditController'
+            })
+            .when('/clients/:id/remove', {
+                templateUrl: 'build/views/client/remove.html',
+                controller: 'ClientRemoveController'
+            })
+            .when('/project/:id/notes', {
+                templateUrl: 'build/views/project-note/list.html',
+                controller: 'ProjectNoteListController'
+            })
+            .when('/project/:id/notes/:idNote', {
+                templateUrl: 'build/views/project-note/show.html',
+                controller: 'ProjectNoteShowController'
+            })
+            .when('/project/:id/notes/new', {
+                templateUrl: 'build/views/project-note/new.html',
+                controller: 'ProjectNoteNewController'
+            })
+            .when('/project/:id/notes/:idNote/edit', {
+                templateUrl: 'build/views/project-note/edit.html',
+                controller: 'ProjectNoteEditController'
+            })
+            .when('/project/:id/notes/:idNote/remove', {
+                templateUrl: 'build/views/project-note/remove.html',
+                controller: 'ProjectNoteRemoveController'
+            });
 
         OAuthProvider.configure({
             baseUrl: appConfigProvider.config.baseUrl,
@@ -62,10 +93,10 @@ app.config([
             }
         });
 
-}]);
+    }]);
 
-app.run(['$rootScope', '$window', 'OAuth', function($rootScope, $window, OAuth) {
-    $rootScope.$on('oauth:error', function(event, rejection) {
+app.run(['$rootScope', '$window', 'OAuth', function ($rootScope, $window, OAuth) {
+    $rootScope.$on('oauth:error', function (event, rejection) {
         // Ignore `invalid_grant` error - should be catched on `LoginController`.
         if ('invalid_grant' === rejection.data.error) {
             return;
