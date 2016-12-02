@@ -46,11 +46,9 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
-              <folding>
-                <marker date="1480706970666" expanded="true" signature="115:1036" ph="[...]" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,13 +105,13 @@
         <option value="$PROJECT_DIR$/app/Transformers/UserTransformer.php" />
         <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/services/user.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/login.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/home.js" />
         <option value="$PROJECT_DIR$/config/services.php" />
         <option value="$PROJECT_DIR$/app/Providers/SistemaRepositoryProvider.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Repositories/UserRepositoryEloquent.php" />
         <option value="$PROJECT_DIR$/app/Repositories/ProjectFileRepositoryEloquent.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/login.js" />
       </list>
     </option>
   </component>
@@ -431,12 +429,12 @@
       <workItem from="1480675759849" duration="475000" />
       <workItem from="1480676254303" duration="146000" />
       <workItem from="1480676425424" duration="1774000" />
-      <workItem from="1480678242212" duration="25078000" />
+      <workItem from="1480678242212" duration="25252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130453000" />
+    <option name="totallyTimeSpent" value="130627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -901,11 +899,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
-          <folding>
-            <marker date="1480706970666" expanded="true" signature="115:1036" ph="[...]" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
