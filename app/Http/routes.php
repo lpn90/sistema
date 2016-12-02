@@ -51,6 +51,9 @@ Route::group(['middleware' => 'oauth'], function (){
         /*Rotas referentes aos Projects Files*/
         Route::get('{id}/members', 'ProjectController@members');
     });
+
+    Route::get('user/authenticated', 'UserController@authenticated');
+
 });
 
 
