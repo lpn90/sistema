@@ -9,7 +9,7 @@ angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);
 angular.module('app.filters', []);
 angular.module('app.services', ['ngResource']);
 
-app.provider('appConfig', function () {
+app.provider('appConfig', ['$httpParamSerializerProvider', function ($httpParamSerializerProvider) {
     var config = {
         baseUrl: 'http://sistema.local',
         project: {
@@ -20,6 +20,12 @@ app.provider('appConfig', function () {
             ]
         },
         utils: {
+            transformRequest: function (data) {
+                if (angular.isObject(data)){
+                    return $httpParamSerializerProvider.$get()(data);
+                }
+                return data;
+            },
             transformResponse: function (data, headers) {
                 var headersGetter = headers();
                 if (headersGetter['content-type'] == 'application/json' || headersGetter['content-type'] == 'text/json') {
@@ -40,13 +46,14 @@ app.provider('appConfig', function () {
             return config;
         }
     }
-});
+}]);
 
 app.config([
     '$routeProvider', 'OAuthProvider', 'OAuthTokenProvider', 'appConfigProvider', '$httpProvider',
     function ($routeProvider, OAuthProvider, OAuthTokenProvider, appConfigProvider, $httpProvider) {
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $httpProvider.defaults.transformRequest = appConfigProvider.config.utils.transformRequest;
         $httpProvider.defaults.transformResponse = appConfigProvider.config.utils.transformResponse;
 
         $routeProvider

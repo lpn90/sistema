@@ -40,7 +40,6 @@ class ProjectController extends Controller
     public function index()
     {
         return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
-        return $this->repository->all();
     }
     
     /**
@@ -100,7 +99,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -110,7 +109,9 @@ class ProjectController extends Controller
         }
 
         try {
-            $this->repository->find($id)->delete();
+            if ($this->repository->find($id)){
+                $this->repository->delete($id);
+            }
             return ['success'=>true, 'Projeto deletado com sucesso!'];
         } catch (QueryException $e) {
             return ['error'=>true, 'Projeto não pode ser apagado pois existe um ou mais clientes vinculados a ele.'];
@@ -123,9 +124,9 @@ class ProjectController extends Controller
 
     public function members($id)
     {
-//        if($this->checkProjectPermission($id) == false){
-//            return ['error' => "Access Forbidden"];
-//        }
+        if($this->checkProjectPermission($id) == false){
+            return ['error' => "Access Forbidden"];
+        }
 
         try{
             return $this->service->members($id);

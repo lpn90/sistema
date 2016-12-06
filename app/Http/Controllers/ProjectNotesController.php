@@ -94,7 +94,9 @@ class ProjectNotesController extends Controller
      */
     public function destroy($idNote)
     {
-        $this->repository->delete($idNote);
+        if ($this->repository->find($idNote)){
+            $this->repository->delete($idNote);
+        }
         return [
             'error' => false,
             'message' => 'Nota excluida com Sucesso.'

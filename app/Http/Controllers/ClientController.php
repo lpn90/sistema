@@ -99,7 +99,9 @@ class ClientController extends Controller
     public function destroy($id)
     {
         try {
-            $this->repository->find($id)->delete();
+            if ($this->repository->find($id)){
+                $this->repository->delete($id);
+            }
             return ['error'=>false, 'message'=>'Cliente deletado com sucesso!'];
         } catch (QueryException $e) {
             return ['error'=>true, 'message'=>'Cliente não pode ser apagado pois existe um ou mais projetos vinculados a ele.'];

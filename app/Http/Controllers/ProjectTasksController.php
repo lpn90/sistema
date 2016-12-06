@@ -107,7 +107,9 @@ class ProjectTasksController extends Controller
     public function destroy($taskId)
     {
         try {
-            $this->repository->find($taskId)->delete();
+            if ($this->repository->find($taskId)){
+                $this->repository->delete($taskId);
+            }
             return ['success'=>true, 'Tarefa deletada com sucesso!'];
         } catch (ModelNotFoundException $e) {
             return ['error'=>true, 'Tarefa não encontrada.'];

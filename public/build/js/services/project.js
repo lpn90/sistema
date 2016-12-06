@@ -1,12 +1,12 @@
 angular.module('app.services')
-    .service('Project', ['$resource', 'appConfig', '$filter', '$httpParamSerializer',
-        function ($resource, appConfig, $filter, $httpParamSerializer) {
+    .service('Project', ['$resource', 'appConfig', '$filter',
+        function ($resource, appConfig, $filter) {
 
             function transformData(data) {
                 if (angular.isObject(data) && data.hasOwnProperty('due_date')) {
                     var o = angular.copy(data);
                     o.due_date = $filter('date')(data.due_date, 'yyyy-MM-dd');
-                    return $httpParamSerializer(o);
+                    return appConfig.utils.transformRequest(o);
                 }
                 return data;
             };
