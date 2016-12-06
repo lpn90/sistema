@@ -2,7 +2,8 @@
  * Created by Leonardo on 24/11/2016.
  */
 var app = angular.module('app', [
-    'ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters'
+    'ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters',
+    'ui.bootstrap.tpls','ui.bootstrap.typeahead', 'ui.bootstrap.datepicker'
 ]);
 
 angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);

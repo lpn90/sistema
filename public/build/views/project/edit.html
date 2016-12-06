@@ -36,13 +36,16 @@
                             <label class="col-md-4 control-label">Client</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="client_id" ng-model="project.client_id"
-                                        ng-options="o.id as o.name for o in clients" required>
-                                    <option value="">( Selecione o Client )</option>
-                                </select>
+                                <input type="text" name="client_id" ng-model="clientSelected" class="form-control"
+                                       uib-typeahead="o as o.name for o in getClients($viewValue)|limitTo:10"
+                                       typeahead-input-formatter="formatName($model)"
+                                       typeahead-on-select="selectClient($item)"
+                                       typeahead-editable="false" required
+                                />
                                 <div ng-messages="form.client_id.$error" class="help-block"
                                      ng-show="form.client_id.$touched">
                                     <div ng-message="required">Campo Obrigatóio!</div>
+                                    <div ng-message="editable">Selecione um Client válido!</div>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +55,21 @@
                             <label class="col-md-4 control-label">Due Date</label>
 
                             <div class="col-md-6">
-                                <input type="date" class="form-control" name="due_date" ng-model="project.due_date"
-                                       required>
+                                <p class="input-group">
+                                    <input type="text" name="due_date" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+                                           ng-model="project.due_date" is-open="due_date.status.opened"
+                                           close-text="Close" required
+                                    />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
                                 <div ng-messages="form.due_date.$error" class="help-block"
                                      ng-show="form.due_date.$touched">
                                     <div ng-message="required">Campo Obrigatóio!</div>
+                                    <div ng-message="date">Data inválida!</div>
                                 </div>
                             </div>
                         </div>
