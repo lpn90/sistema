@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use LucaDegasperi\OAuth2Server\Exceptions\NoActiveAccessTokenException;
 
 
-class ProjectFileController extends Controller
+class ProjectFilesController extends Controller
 {
 
     /**
