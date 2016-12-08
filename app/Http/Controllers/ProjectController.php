@@ -40,6 +40,8 @@ class ProjectController extends Controller
         $this->repository = $repository;
         $this->service = $service;
         $this->taskRepository = $taskRepository;
+        $this->middleware('check.project.owner', ['except' => ['index', 'store', 'show']]);
+        $this->middleware('check.project.permission', ['except' => ['index', 'store', 'update', 'destroy']]);
     }
 
     /**
@@ -49,7 +51,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
+        return $this->repository->findWithOwnerAndMember(\Authorizer::getResourceOwnerId());
     }
 
     /**
@@ -71,10 +73,6 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        if ($this->service->checkProjectPermission($id) == false) {
-            return ['error' => "Access Forbidden"];
-        }
-
         try {
             return $this->repository->find($id);
         } catch (ModelNotFoundException $e) {
@@ -93,10 +91,6 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($this->service->checkProjectOwner($id) == false) {
-            return ['error' => "Access Forbidden"];
-        }
-
         try {
             return $this->service->update($request->all(), $id);
         } catch (ModelNotFoundException $e) {
@@ -114,10 +108,6 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->service->checkProjectOwner($id) == false) {
-            return ['error' => "Access Forbidden"];
-        }
-
         try {
             $this->repository->delete($id);
             return ['success' => true, 'Projeto deletado com sucesso!'];
@@ -132,10 +122,6 @@ class ProjectController extends Controller
 
     public function members($id)
     {
-        if ($this->checkProjectPermission($id) == false) {
-            return ['error' => "Access Forbidden"];
-        }
-
         try {
             return $this->service->members($id);
         } catch (ModelNotFoundException $e) {
@@ -143,6 +129,14 @@ class ProjectController extends Controller
         } catch (Exception $e) {
             return ['error' => true, 'Ocorreu algum erro ao pesquisar o projeto.'];
         }
+    }
+
+    private function erroMsgm($mensagem)
+    {
+        return [
+            'error' => true,
+            'message' => $mensagem,
+        ];
     }
 
 }

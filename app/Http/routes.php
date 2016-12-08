@@ -29,28 +29,28 @@ Route::group(['middleware' => 'oauth'], function (){
     Route::resource('project', 'ProjectController', ['except' => ['create', 'edit']]);
 
 
-    Route::group(['prefix' => 'project'], function () {
+    Route::group(['prefix' => 'project', 'middleware'=>'check.project.permission'], function () {
         /*Rotas referentes aos Projects Notes*/
         Route::get('{id}/note', 'ProjectNotesController@index');
         Route::post('{id}/note', 'ProjectNotesController@store');
         Route::get('{id}/note/{idNote}', 'ProjectNotesController@show');
         Route::put('{id}/note/{idNote}', 'ProjectNotesController@update');
-        Route::delete('note/{idNote}', 'ProjectNotesController@destroy');
+        Route::delete('{id}/note/{idNote}', 'ProjectNotesController@destroy');
 
         /*Rotas referentes aos Projects Files*/
         Route::get('{id}/files', 'ProjectFilesController@index');
-        Route::get('files/{fileId}', 'ProjectFilesController@show');
-        Route::get('files/{fileId}/download', 'ProjectFilesController@showFile');
+        Route::get('{id}/files/{fileId}', 'ProjectFilesController@show');
+        Route::get('{id}/files/{fileId}/download', 'ProjectFilesController@showFile');
         Route::post('{id}/files', 'ProjectFilesController@store');
-        Route::put('files/{fileId}', 'ProjectFilesController@update');
-        Route::delete('files/{fileId}', 'ProjectFilesController@destroy');
+        Route::put('{id}/files/{fileId}', 'ProjectFilesController@update');
+        Route::delete('{id}/files/{fileId}', 'ProjectFilesController@destroy');
 
         /*Rotas referentes aos Projects Tasks*/
         Route::get('{id}/task', 'ProjectTasksController@index');
         Route::post('{id}/task', 'ProjectTasksController@store');
         Route::get('{id}/task/{taskId}', 'ProjectTasksController@show');
         Route::put('{id}/task/{taskId}', 'ProjectTasksController@update');
-        Route::delete('task/{taskId}', 'ProjectTasksController@destroy');
+        Route::delete('{id}/task/{taskId}', 'ProjectTasksController@destroy');
 
         /*Rotas referentes aos Projects Files*/
         Route::get('{id}/members', 'ProjectController@members');

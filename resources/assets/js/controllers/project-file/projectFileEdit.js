@@ -3,14 +3,14 @@ angular.module('app.controllers')
         ['$scope', '$location', 'ProjectFile', '$routeParams',
             function ($scope, $location, ProjectFile, $routeParams) {
                 $scope.projectFile = ProjectFile.get({
-                    id: null,
+                    id: $routeParams.id,
                     idFile: $routeParams.idFile
                 });
 
                 $scope.save = function () {
                     if ($scope.form.$valid) {
                         ProjectFile.update({
-                            id: null, idFile: $routeParams.idFile
+                            id: $routeParams.id, idFile: $routeParams.idFile
                         }, $scope.projectFile, function () {
                                 $location.path('/project/' + $routeParams.id + '/files');
                         });

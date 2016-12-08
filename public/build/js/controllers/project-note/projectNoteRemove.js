@@ -9,7 +9,8 @@ angular.module('app.controllers')
 
         $scope.remove = function () {
             $scope.projectNote.$delete({
-                id: null, idNote: $scope.projectNote.id}).then(function (data) {
+                id: $routeParams.id, idNote: $scope.projectNote.id
+            }).then(function (data) {
                 $location.path('/project/' + $routeParams.id + '/notes');
             });
         }

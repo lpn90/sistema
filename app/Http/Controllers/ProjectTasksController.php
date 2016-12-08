@@ -57,9 +57,11 @@ class ProjectTasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        return $this->service->create($request->all());
+        $data = $request->all();
+        $data['project_id'] = $id;
+        return $this->service->create($data);
     }
 
     /**
@@ -89,7 +91,9 @@ class ProjectTasksController extends Controller
     public function update(Request $request, $taskId, $id)
     {
         try{
-            return $this->service->update($request->all(),$taskId);
+            $data = $request->all();
+            $data['project_id'] = $id;
+            return $this->service->update($data,$taskId);
         } catch (ModelNotFoundException $e) {
             return ['error'=>true, 'Tarefa não encontrada.'];
         } catch (Exception $e) {
@@ -101,10 +105,11 @@ class ProjectTasksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param $taskId
+     * @param int $taskId
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($taskId)
+    public function destroy($id, $taskId)
     {
         try {
             if ($this->repository->find($taskId)){

@@ -20,7 +20,7 @@
                                 <!-- <a ng-href="/project/files/{{ o.id }}/download" target="_blank" class="btn btn-primary btn-xs" title="Download">
                                     <i class="fa fa-download"></i>
                                 </a>-->
-                                <project-file-download id-file="{{ o.id }}"></project-file-download>
+                                <project-file-download id-project="{{o.project_id}}" id-file="{{ o.id }}"></project-file-download>
                                 <a ng-href="#/project/{{ o.project_id }}/files/{{ o.id }}/edit" class="btn btn-success btn-xs" title="Editar">
                                     <i class="fa fa-edit"></i>
                                 </a>

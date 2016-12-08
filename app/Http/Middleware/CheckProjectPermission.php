@@ -6,7 +6,7 @@ use Closure;
 use Sistema\Services\ProjectService;
 use Illuminate\Support\Facades\Response;
 
-class CheckProjectOwner
+class CheckProjectPermission
 {
 
     /**
@@ -29,10 +29,10 @@ class CheckProjectOwner
     public function handle($request, Closure $next)
     {
         $projectId = $request->route('id') ? $request->route('id') : $request->route('project');
-        if($this->service->checkProjectOwner($projectId) == false){
+        if($this->service->checkProjectPermission($projectId) == false){
             return Response::json([
                 'error' => true,
-                'message' => "Você não tem permissão de owner neste projeto!"
+                'message' => "Você não tem permissão para acessar esse projeto!"
             ], 400);
         }
         

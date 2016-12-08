@@ -48,7 +48,9 @@ class ProjectNotesController extends Controller
      */
     public function store(Request $request, $id)
     {
-        return $this->service->create($request->all());
+        $data = $request->all();
+        $data['project_id'] = $id;
+        return $this->service->create($data);
     }
 
 
@@ -81,8 +83,9 @@ class ProjectNotesController extends Controller
      */
     public function update(Request $request, $id, $idNote)
     {
-
-        return $this->service->update($request->all(),$idNote);
+        $data = $request->all();
+        $data['project_id'] = $id;
+        return $this->service->update($data,$idNote);
     }
 
 
@@ -91,8 +94,9 @@ class ProjectNotesController extends Controller
      *
      * @return int
      * @internal param int $idNote
+     * @internal param int $id
      */
-    public function destroy($idNote)
+    public function destroy($id, $idNote)
     {
         if ($this->repository->find($idNote)){
             $this->repository->delete($idNote);
