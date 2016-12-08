@@ -17,13 +17,14 @@
                             <th>{{ o.name }}</th>
                             <th>{{ o.description | limitTo: 40 }} ...</th>
                             <th>
-                                <a ng-href="/project/files/{{ o.id }}/download" target="_blank" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Download">
+                                <!-- <a ng-href="/project/files/{{ o.id }}/download" target="_blank" class="btn btn-primary btn-xs" title="Download">
                                     <i class="fa fa-download"></i>
-                                </a>
-                                <a ng-href="#/project/{{ o.project_id }}/files/{{ o.id }}/edit" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar">
+                                </a>-->
+                                <project-file-download id-file="{{ o.id }}"></project-file-download>
+                                <a ng-href="#/project/{{ o.project_id }}/files/{{ o.id }}/edit" class="btn btn-success btn-xs" title="Editar">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a ng-href="#/project/{{ o.project_id }}/filess/{{ o.id }}/remove" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+                                <a ng-href="#/project/{{ o.project_id }}/files/{{ o.id }}/remove" class="btn btn-danger btn-xs" title="Excluir">
                                 <i class="fa fa-minus-circle"></i>
                                 </a>
                             </th>

@@ -2,29 +2,33 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Exclusão de Nota de Projeto</div>
+                <div class="panel-heading">Exclusão de Arquivo de Projeto
+                    <span style="float:right">
+                       <project-file-download id-file="{{projectFile.id}}"></project-file-download>
+                   </span>
+                </div>
                 <div class="panel-body">
                     <div class="alert alert-danger" ng-show="error.error">
                         <strong>Whoops!</strong> Ocorreram erros.<br><br>
                         <div>{{ error.message }}</div>
                     </div>
-                    <p ng-show="!error.error">Deseja realmente Excluir este Cliente?</p>
+                    <p ng-show="!error.error">Deseja realmente Excluir este Arquivo?</p>
 
                     <ul ng-show="!error.error">
-                        <li><strong>Title: </strong>{{ projectNote.title }}</li>
-                        <li><strong>Nota: </strong>{{ projectNote.note }}</li>
+                        <li><strong>Nome: </strong>{{ projectFile.name }}</li>
+                        <li><strong>Description: </strong>{{ projectFile.description }}</li>
                     </ul>
 
 
                     <div class="form-group" ng-show="!error.error">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="button" class="btn btn-danger" ng-click="remove()">Excluir</button>
-                            <a ng-href="#/project/{{ projectNote.project_id }}/notes" type="button" class="btn btn-default">Cancelar</a>
+                            <a ng-href="#/project/{{ projectFile.project_id }}/files" type="button" class="btn btn-default">Cancelar</a>
                         </div>
                     </div>
                     <div class="form-group" ng-show="error.error">
                         <div class="col-md-6 col-md-offset-4">
-                            <a ng-href="#/clients" type="button" class="btn btn-default">Voltar</a>
+                            <a ng-href="#/project/{{ projectFile.project_id }}/files" type="button" class="btn btn-default">Voltar</a>
                         </div>
                     </div>
 

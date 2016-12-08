@@ -42,8 +42,8 @@ Route::group(['middleware' => 'oauth'], function (){
         Route::get('files/{fileId}', 'ProjectFilesController@show');
         Route::get('files/{fileId}/download', 'ProjectFilesController@showFile');
         Route::post('{id}/files', 'ProjectFilesController@store');
-        Route::put('{id}/files', 'ProjectFilesController@update');
-        Route::delete('{id}/files', 'ProjectFilesController@destroy');
+        Route::put('files/{fileId}', 'ProjectFilesController@update');
+        Route::delete('files/{fileId}', 'ProjectFilesController@destroy');
 
         /*Rotas referentes aos Projects Tasks*/
         Route::get('{id}/task', 'ProjectTasksController@index');
