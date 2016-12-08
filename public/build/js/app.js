@@ -3,7 +3,7 @@
  */
 var app = angular.module('app', [
     'ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters',
-    'ui.bootstrap.tpls','ui.bootstrap.typeahead', 'ui.bootstrap.datepicker'
+    'ui.bootstrap.tpls','ui.bootstrap.typeahead', 'ui.bootstrap.datepicker', 'ngFileUpload'
 ]);
 
 angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);
@@ -19,6 +19,9 @@ app.provider('appConfig', ['$httpParamSerializerProvider', function ($httpParamS
                 {value: 2, label: 'Iniciado'},
                 {value: 3, label: 'Concluido'}
             ]
+        },
+        urls: {
+            projectFile: '/project/{{id}}/files/{{idFile}}'
         },
         utils: {
             transformRequest: function (data) {
@@ -106,6 +109,10 @@ app.config([
                 templateUrl: 'build/views/project-note/new.html',
                 controller: 'ProjectNoteNewController'
             })
+            .when('/project/:id/notes/:idNote', {
+                templateUrl: 'build/views/project-note/listNote.html',
+                controller: 'ProjectNoteListNoteController'
+            })
             .when('/project/:id/notes/:idNote/show', {
                 templateUrl: 'build/views/project-note/show.html',
                 controller: 'ProjectNoteShowController'
@@ -117,6 +124,22 @@ app.config([
             .when('/project/:id/notes/:idNote/remove', {
                 templateUrl: 'build/views/project-note/remove.html',
                 controller: 'ProjectNoteRemoveController'
+            })
+            .when('/project/:id/files', {
+                templateUrl: 'build/views/project-file/list.html',
+                controller: 'ProjectFileListController'
+            })
+            .when('/project/:id/files/new', {
+                templateUrl: 'build/views/project-file/new.html',
+                controller: 'ProjectFileNewController'
+            })
+            .when('/project/:id/files/:idFile/edit', {
+                templateUrl: 'build/views/project-file/edit.html',
+                controller: 'ProjectFileEditController'
+            })
+            .when('/project/:id/files/:idFile/remove', {
+                templateUrl: 'build/views/project-file/remove.html',
+                controller: 'ProjectFileRemoveController'
             });
 
 

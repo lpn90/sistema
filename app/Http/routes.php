@@ -38,8 +38,12 @@ Route::group(['middleware' => 'oauth'], function (){
         Route::delete('note/{idNote}', 'ProjectNotesController@destroy');
 
         /*Rotas referentes aos Projects Files*/
-        Route::post('{id}/file', 'ProjectFilesController@store');
-        Route::delete('{id}/file/{fileId}', 'ProjectFilesController@destroy');
+        Route::get('{id}/files', 'ProjectFilesController@index');
+        Route::get('files/{fileId}', 'ProjectFilesController@show');
+        Route::get('files/{fileId}/download', 'ProjectFilesController@showFile');
+        Route::post('{id}/files', 'ProjectFilesController@store');
+        Route::put('{id}/files', 'ProjectFilesController@update');
+        Route::delete('{id}/files', 'ProjectFilesController@destroy');
 
         /*Rotas referentes aos Projects Tasks*/
         Route::get('{id}/task', 'ProjectTasksController@index');

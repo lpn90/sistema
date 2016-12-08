@@ -6,8 +6,10 @@ use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Sistema\Repositories\ClientRepository;
 use Sistema\Services\ClientService;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class ClientController extends Controller
 {

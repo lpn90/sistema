@@ -39,12 +39,10 @@ class ProjectService
      * @param $repository
      * @param $validator
      */
-    public function __construct(ProjectRepository $repository, ProjectValidator $validator, Filesystem $filesystem, Storage $storage)
+    public function __construct(ProjectRepository $repository, ProjectValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
-        $this->filesystem = $filesystem;
-        $this->storage = $storage;
     }
 
     public function create(array $data)
@@ -80,14 +78,6 @@ class ProjectService
         }
 
     }
-
-    public function listFile(array $data)
-    {
-        $project = $this->repository->skipPresenter()->find($data['project_id']);
-        $projectFile = $project->files()->create($data);
-
-        $this->storage->put($projectFile->id.".".$data['extension'], $this->filesystem->get($data['file']));
-    }
     
     public function addMember(array $data)
     {
@@ -117,6 +107,28 @@ class ProjectService
     {
         $project = $this->repository->skipPresenter()->find($id);
         return $project->members;
+    }
+
+    /*Validações */
+
+    public function checkProjectOwner($projectId)
+    {
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->isOwner($projectId, $userId);
+    }
+
+    public function checkProjectMember($projectId)
+    {
+        $userId = \Authorizer::getResourceOwnerId();
+        return $this->repository->hasMember($projectId, $userId);
+    }
+
+    public function checkProjectPermission($projectId)
+    {
+        if($this->checkProjectOwner($projectId) or $this->checkProjectMember($projectId)){
+            return true;
+        }
+        return false;
     }
 
 }

@@ -21,21 +21,22 @@ class ProjectFilesController extends Controller
      * @var ProjectFileService
      */
     private $service;
+
     public function __construct(ProjectFileRepository $repository, ProjectFileService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
     }
 
-//    /**
-//     * Display a listing of the resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function index()
-//    {
-//        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
-//    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id)
+    {
+        return $this->repository->findWhere(['project_id' => $id]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -55,7 +56,56 @@ class ProjectFilesController extends Controller
         $data['name'] = $request->name;
         $data['description'] = $request->description;
         $data['project_id'] = $id;
+
         return $this->service->create($data);
+    }
+
+    public function showFile($id)
+    {
+        if ($this->service->checkProjectPermissions($id) == false){
+            return ['error' => 'Access Forbidden'];
+        }
+
+        return response()->download($this->service->getFilePath($id));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        if ($this->service->checkProjectPermissions($id) == false){
+            return ['error' => 'Access Forbidden'];
+        }
+
+        return $this->repository->find($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            if ($this->service->checkProjectPermissions($id) == false){
+                return ['error' => 'Access Forbidden'];
+            }
+
+            return $this->service->update($request->all(), $id);
+        } catch (ModelNotFoundException $e) {
+            return $this->erroMsgm('Projeto não encontrado.');
+        } catch (NoActiveAccessTokenException $e) {
+            return $this->erroMsgm('Usuário não está logado.');
+        } catch (\Exception $e) {
+            return $this->erroMsgm('Ocorreu um erro ao atualizar o projeto.');
+        }
     }
 
     /**
@@ -64,61 +114,22 @@ class ProjectFilesController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($projectId, $id)
+    public function destroy($id)
     {
-        $this->service->delete($id);
-        return ['error'=>false,'Arquivo deletado com sucesso'];
-    }
-
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        if($this->checkProjectPermission($id) == false){
-//            return ['error' => "Access Forbidden"];
-//        }
-//
-//        return $this->repository->with('owner')->with('client')->with('members')->find($id);
-//    }
-
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function update(Request $request, $id)
-//    {
-//       if($this->checkProjectPermission($id) == false){
-//           return ['error' => "Access Forbidden"];
-//       }
-//
-//       return $this->service->update($request->all(),$id);
-//    }
-
-    private function checkProjectOwner($projectId)
-    {
-        $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->isOwner($projectId, $userId);
-    }
-
-    private function checkProjectMember($projectId)
-    {
-        $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->hasMember($projectId, $userId);
-    }
-
-    private function checkProjectPermission($projectId)
-    {
-        if($this->checkProjectOwner($projectId) or $this->checkProjectMember($projectId)){
-            return true;
+        if ($this->service->checkProjectPermissions($id) == false){
+            return ['error' => 'Access Forbidden'];
         }
-        return false;
+        
+        $this->service->delete($id);
+        return ['error' => false, 'Arquivo deletado com sucesso'];
+    }
+
+    private function erroMsgm($mensagem)
+    {
+        return [
+            'error' => true,
+            'message' => $mensagem,
+        ];
     }
 
 }

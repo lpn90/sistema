@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Sistema\Repositories\ProjectRepository;
+use Sistema\Repositories\ProjectTaskRepository;
 use Sistema\Services\ProjectService;
+use LucaDegasperi\OAuth2Server\Exceptions\NoActiveAccessTokenException;
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class ProjectController extends Controller
 {
@@ -23,15 +27,21 @@ class ProjectController extends Controller
     private $service;
 
     /**
+     * @var ProjectTaskRepository
+     */
+    private $taskRepository;
+
+    /**
      * ClientController constructor.
      * @param $repository
      */
-    public function __construct(ProjectRepository $repository, ProjectService $service)
+    public function __construct(ProjectRepository $repository, ProjectService $service, ProjectTaskRepository $taskRepository)
     {
         $this->repository = $repository;
         $this->service = $service;
+        $this->taskRepository = $taskRepository;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -41,11 +51,11 @@ class ProjectController extends Controller
     {
         return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,43 +66,43 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if($this->checkProjectPermission($id) == false){
+        if ($this->service->checkProjectPermission($id) == false) {
             return ['error' => "Access Forbidden"];
         }
 
-        try{
-            return $this->repository->with('owner')->with('client')->with('members')->find($id);
+        try {
+            return $this->repository->find($id);
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Projeto não encontrado.'];
+            return ['error' => true, 'Projeto não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao pesquisar o projeto.'];
-        } 
+            return ['error' => true, 'Ocorreu algum erro ao pesquisar o projeto.'];
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-       if($this->checkProjectPermission($id) == false){
-           return ['error' => "Access Forbidden"];
-       }
+        if ($this->service->checkProjectOwner($id) == false) {
+            return ['error' => "Access Forbidden"];
+        }
 
-        try{
-            return $this->service->update($request->all(),$id);
-        }   catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Projeto não encontrado.'];
+        try {
+            return $this->service->update($request->all(), $id);
+        } catch (ModelNotFoundException $e) {
+            return ['error' => true, 'Projeto não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao atualizar o projeto.'];
+            return ['error' => true, 'Ocorreu algum erro ao atualizar o projeto.'];
         }
     }
 
@@ -104,59 +114,35 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        if($this->checkProjectOwner($id) == false){
+        if ($this->service->checkProjectOwner($id) == false) {
             return ['error' => "Access Forbidden"];
         }
 
         try {
-            if ($this->repository->find($id)){
-                $this->repository->delete($id);
-            }
-            return ['success'=>true, 'Projeto deletado com sucesso!'];
+            $this->repository->delete($id);
+            return ['success' => true, 'Projeto deletado com sucesso!'];
         } catch (QueryException $e) {
-            return ['error'=>true, 'Projeto não pode ser apagado pois existe um ou mais clientes vinculados a ele.'];
+            return ['error' => true, 'Projeto não pode ser apagado pois existe um ou mais clientes vinculados a ele.'];
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Projeto não encontrado.'];
+            return ['error' => true, 'Projeto não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao excluir o projeto.'];
+            return ['error' => true, 'Ocorreu algum erro ao excluir o projeto.'];
         }
     }
 
     public function members($id)
     {
-        if($this->checkProjectPermission($id) == false){
+        if ($this->checkProjectPermission($id) == false) {
             return ['error' => "Access Forbidden"];
         }
 
-        try{
+        try {
             return $this->service->members($id);
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Projeto não encontrado.'];
+            return ['error' => true, 'Projeto não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao pesquisar o projeto.'];
+            return ['error' => true, 'Ocorreu algum erro ao pesquisar o projeto.'];
         }
-    }
-
-    /*Validações */
-
-    private function checkProjectOwner($projectId)
-    {
-        $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->isOwner($projectId, $userId);
-    }
-
-    private function checkProjectMember($projectId)
-    {
-        $userId = \Authorizer::getResourceOwnerId();
-        return $this->repository->hasMember($projectId, $userId);
-    }
-
-    private function checkProjectPermission($projectId)
-    {
-        if($this->checkProjectOwner($projectId) or $this->checkProjectMember($projectId)){
-            return true;
-        }
-        return false;
     }
 
 }

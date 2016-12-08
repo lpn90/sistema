@@ -11,7 +11,7 @@ use League\Fractal\TransformerAbstract;
 use Sistema\Entities\User;
 
 
-class ProjectMemberTransformer extends TransformerAbstract
+class MemberTransformer extends TransformerAbstract
 {
 
     public function transform(User $member)
