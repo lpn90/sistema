@@ -3,7 +3,6 @@
 namespace Sistema\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 use Sistema\Http\Requests;
 use Sistema\Repositories\UserRepository;
@@ -18,6 +17,7 @@ class UserController extends Controller
 
     /**
      * UserController constructor.
+     * @param UserRepository $repository
      */
     public function __construct(UserRepository $repository)
     {
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repository->all();
     }
 
     /**

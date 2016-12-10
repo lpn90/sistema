@@ -8,6 +8,7 @@
 namespace Sistema\Repositories;
 
 
+use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Sistema\Entities\Client;
 use Sistema\Presenters\ClientPresenter;
@@ -32,7 +33,7 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
 
     public function boot()
     {
-        $this->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $this->pushCriteria(app(RequestCriteria::class));
     }
 
 }

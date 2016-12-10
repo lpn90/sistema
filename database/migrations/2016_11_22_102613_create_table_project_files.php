@@ -15,7 +15,7 @@ class CreateTableProjectFiles extends Migration
         Schema::create('project_files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullalbe();
             $table->string('extension');
             $table->timestamps();
         });

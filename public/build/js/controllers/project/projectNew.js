@@ -3,6 +3,7 @@ angular.module('app.controllers')
         ['$scope', '$location', 'Project', 'Client', 'appConfig', '$cookies',
             function ($scope, $location, Project, Client, appConfig, $cookies) {
                 $scope.project = new Project();
+                $scope.clients = Client.query();
                 $scope.status = appConfig.project.status;
 
                 $scope.due_date = {

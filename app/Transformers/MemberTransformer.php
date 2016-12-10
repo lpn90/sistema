@@ -7,19 +7,26 @@
 
 namespace Sistema\Transformers;
 
-use League\Fractal\TransformerAbstract;
 use Sistema\Entities\User;
+use League\Fractal\TransformerAbstract;
 
 
 class MemberTransformer extends TransformerAbstract
 {
+    /**
+    * Class ClientTransformer
+    * @package Sistema\Transformers
+    * Transform the \Client entity
+    * @param User $member
+    *
+    * @return array
+    */
 
     public function transform(User $member)
     {
         return [
-            'id' => (int)$member->id,
+            'member_id' => $member->id,
             'name' => $member->name,
         ];
     }
-
 }

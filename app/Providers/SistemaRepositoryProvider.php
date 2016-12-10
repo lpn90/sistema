@@ -56,5 +56,10 @@ class SistemaRepositoryProvider extends ServiceProvider
             \Sistema\Repositories\ProjectFileRepository::class,
             \Sistema\Repositories\ProjectFileRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \Sistema\Repositories\ProjectMemberRepository::class,
+            \Sistema\Repositories\ProjectMemberRepositoryEloquent::class
+        );
     }
 }

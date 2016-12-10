@@ -23,21 +23,14 @@ class ProjectTasksController extends Controller
     protected $service;
 
     /**
-     * @var ProjectTaskValidator
-     */
-    protected $validator;
-
-    /**
      * ProjectTaskController constructor.
      * @param ProjectTaskRepository $repository
      * @param ProjectTaskService $service
-     * @param ProjectTaskValidator $validator
      */
-    public function __construct(ProjectTaskRepository $repository, ProjectTaskService $service, ProjectTaskValidator $validator)
+    public function __construct(ProjectTaskRepository $repository, ProjectTaskService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
-        $this->validator = $validator;
     }
 
 
@@ -54,7 +47,7 @@ class ProjectTasksController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
@@ -67,39 +60,40 @@ class ProjectTasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $taskId)
+    public function show($id, $idTask)
     {
-        try{
-            return $this->repository->findWhere(['project_id'=> $id, 'id' => $taskId]);
-        }catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Tarefa não encontrada.'];
+        try {
+            return $this->repository->find($idTask);
+        } catch (ModelNotFoundException $e) {
+            return ['error' => true, 'Tarefa não encontrada.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao pesquisar a tarefa.'];
+            return ['error' => true, 'Ocorreu algum erro ao pesquisar a tarefa.'];
         }
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @param  int $idTask
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $taskId, $id)
+    public function update(Request $request, $id, $idTask)
     {
-        try{
+        try {
             $data = $request->all();
             $data['project_id'] = $id;
-            return $this->service->update($data,$taskId);
+            return $this->service->update($data, $idTask);
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Tarefa não encontrada.'];
+            return ['error' => true, 'Tarefa não encontrada.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao atualizar a tarefa.'];
+            return ['error' => true, $e];
         }
-        
+
     }
 
     /**
@@ -109,17 +103,15 @@ class ProjectTasksController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $taskId)
+    public function destroy($id, $idTask)
     {
         try {
-            if ($this->repository->find($taskId)){
-                $this->repository->delete($taskId);
-            }
-            return ['success'=>true, 'Tarefa deletada com sucesso!'];
+            $this->service->delete($idTask);
+            return ['success' => true, 'Tarefa deletada com sucesso!'];
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'Tarefa não encontrada.'];
+            return ['error' => true, 'Tarefa não encontrada.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'Ocorreu algum erro ao excluir a tarefa.'];
+            return ['error' => true, 'Ocorreu algum erro ao excluir a tarefa.'];
         }
     }
 }

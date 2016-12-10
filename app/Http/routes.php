@@ -27,6 +27,9 @@ Route::group(['middleware' => 'oauth'], function (){
 
     /*Rotas referentes aos Projects*/
     Route::resource('project', 'ProjectController', ['except' => ['create', 'edit']]);
+    //Route::get('projects-member', 'ProjectController@projectsMember');
+
+    Route::resource('project.member', 'ProjectMembersController', ['except'=>['create','edit', 'update']]);
 
 
     Route::group(['prefix' => 'project', 'middleware'=>'check.project.permission'], function () {
@@ -48,15 +51,19 @@ Route::group(['middleware' => 'oauth'], function (){
         /*Rotas referentes aos Projects Tasks*/
         Route::get('{id}/task', 'ProjectTasksController@index');
         Route::post('{id}/task', 'ProjectTasksController@store');
-        Route::get('{id}/task/{taskId}', 'ProjectTasksController@show');
-        Route::put('{id}/task/{taskId}', 'ProjectTasksController@update');
-        Route::delete('{id}/task/{taskId}', 'ProjectTasksController@destroy');
+        Route::get('{id}/task/{idTask}', 'ProjectTasksController@show');
+        Route::put('{id}/task/{idTask}', 'ProjectTasksController@update');
+        Route::delete('{id}/task/{idTask}', 'ProjectTasksController@destroy');
 
-        /*Rotas referentes aos Projects Files*/
-        Route::get('{id}/members', 'ProjectController@members');
+        /*Rotas referentes aos Projects Members*/
+        Route::get('{id}/member', 'ProjectController@members');
+        Route::post('{id}/member/{member_id}', 'ProjectController@addMember');
+        Route::delete('{id}/member/{member_id}', 'ProjectController@removeMember');
     });
 
     Route::get('user/authenticated', 'UserController@authenticated');
+
+    Route::resource('user', 'UserController', ['except'=>['create','edit']]);
 
 });
 

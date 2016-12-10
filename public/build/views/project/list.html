@@ -23,10 +23,23 @@
                             <th>{{ o.status }}</th>
                             <th>{{ o.due_date | dateBr }}</th>
                             <th>
-                                <a ng-href="#/projects/{{ o.id }}/edit" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar">
+                                <a ng-href="#/project/{{ o.id }}/edit" class="btn btn-success btn-xs" title="Editar">
                                     <i class="fa fa-edit"></i>
-                                </a>  <a ng-href="#/projects/{{ o.id }}/remove" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
-                                <i class="fa fa-minus-circle"></i>
+                                </a>
+                                <a ng-href="#/project/{{ o.id }}/remove" class="btn btn-danger btn-xs" title="Excluir">
+                                    <i class="fa fa-minus-circle"></i>
+                                </a>
+                                 <a ng-href="#/project/{{ o.id }}/files" class="btn btn-info btn-xs" title="Arquivos">
+                                    <i class="fa fa-file"></i>
+                                </a>
+                                 <a ng-href="#/project/{{ o.id }}/notes" class="btn btn-info btn-xs" title="Notas">
+                                    <i class="fa fa-comments"></i>
+                                </a>
+                                <a ng-href="#/project/{{ o.id }}/members" class="btn btn-info btn-xs" title="Membros">
+                                    <i class="fa fa-users"></i>
+                                </a>
+                                <a ng-href="#/project/{{ o.id }}/tasks" class="btn btn-info btn-xs" title="Tarefas">
+                                    <i class="fa fa-tasks"></i>
                                 </a>
                             </th>
                         </tr>

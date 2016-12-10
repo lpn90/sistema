@@ -8,6 +8,7 @@
 namespace Sistema\Repositories;
 
 
+use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Sistema\Entities\ProjectFile;
 use Sistema\Presenters\ProjectFilePresenter;
@@ -23,7 +24,7 @@ class ProjectFileRepositoryEloquent extends BaseRepository implements ProjectFil
 
     public function boot()
     {
-       //
+        $this->pushCriteria(app(RequestCriteria::class));
     }
 
     public function validator()

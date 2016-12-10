@@ -143,3 +143,11 @@ Não se preocupe com os detalhes agora, o importante é que os dois CRUD's funci
 
 
 Obs.: utilize o método skipPresenter() nas consultas do repository por enquanto, para facilitar os CRUD's.
+
+-> Fase 4
+
+* Project CRUD
+
+  Agora que já fizemos o CRUD de project note, você deverá fazer o CRUD de project.
+  Use o conhecimento que aprendeu para passar o owner_id (usuário autenticado) no cadastro e use o ng-select e ng-options para mostrar os clients a serem incluídos no projeto.
+  As rotas deste CRUD serão semelhante ao formato que usamos no CRUD de client.

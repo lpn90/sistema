@@ -8,10 +8,9 @@
 namespace Sistema\Services;
 
 
-use Sistema\Repositories\ProjectNoteRepository;
+use Sistema\Repositories\ProjectRepository;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Sistema\Repositories\ProjectTaskRepository;
-use Sistema\Validators\ProjectNoteValidator;
 use Sistema\Validators\ProjectTaskValidator;
 
 class ProjectTaskService
@@ -27,48 +26,54 @@ class ProjectTaskService
     protected $validator;
 
     /**
+     * @var ProjectRepository
+     */
+    private $projectRepository;
+
+    /**
      * ClientService constructor.
      * @param $repository
      * @param $validator
      */
-    public function __construct(ProjectTaskRepository $repository, ProjectTaskValidator $validator)
+    public function __construct(ProjectTaskRepository $repository, ProjectRepository $projectRepository, ProjectTaskValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
+        $this->projectRepository = $projectRepository;
     }
+
 
     public function create(array $data)
     {
-
-        try{
+        try {
             $this->validator->with($data)->passesOrFail();
-
-            return $this->repository->create($data);
-
-        }catch (ValidatorException $e){
+            $project = $this->projectRepository->skipPresenter()->find($data['project_id']);
+            $projectTask = $project->tasks()->create($data);
+            return $projectTask;
+        } catch (ValidatorException $e) {
             return [
                 'error' => true,
                 'message' => $e->getMessageBag()
             ];
         }
-
     }
 
     public function update(array $data, $id)
     {
-
-        try{
+        try {
             $this->validator->with($data)->passesOrFail();
-
             return $this->repository->update($data, $id);
-
-        }catch (ValidatorException $e){
+        } catch (ValidatorException $e) {
             return [
                 'error' => true,
                 'message' => $e->getMessageBag()
             ];
         }
-
     }
 
+    public function delete($id)
+    {
+        $projectTask = $this->repository->skipPresenter()->find($id);
+        return $projectTask->delete();
+    }
 }

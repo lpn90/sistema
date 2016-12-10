@@ -56,7 +56,7 @@ $factory->define(Sistema\Entities\ProjectTask::class, function (Faker\Generator 
             'name' => $faker->name,
             'start_date' => $faker->date(),
             'due_date' => $faker->date(),
-            'status' => $faker->numberBetween(1, 3),
+            'status' => $faker->numberBetween(1, 2),
             'project_id' => $faker->numberBetween(1, 10),
         ];
 });
