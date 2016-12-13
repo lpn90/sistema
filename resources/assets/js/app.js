@@ -3,7 +3,8 @@
  */
 var app = angular.module('app', [
     'ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters', 'app.directives',
-    'ui.bootstrap.tpls','ui.bootstrap.typeahead', 'ui.bootstrap.datepicker', 'ngFileUpload'
+    'ui.bootstrap.tpls', 'ui.bootstrap.typeahead', 'ui.bootstrap.datepicker', 'ui.bootstrap.modal',
+    'ngFileUpload', 'http-auth-interceptor'
 ]);
 
 angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);
@@ -32,7 +33,7 @@ app.provider('appConfig', ['$httpParamSerializerProvider', function ($httpParamS
         },
         utils: {
             transformRequest: function (data) {
-                if (angular.isObject(data)){
+                if (angular.isObject(data)) {
                     return $httpParamSerializerProvider.$get()(data);
                 }
                 return data;
@@ -66,11 +67,22 @@ app.config([
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
         $httpProvider.defaults.transformRequest = appConfigProvider.config.utils.transformRequest;
         $httpProvider.defaults.transformResponse = appConfigProvider.config.utils.transformResponse;
+        $httpProvider.interceptors.splice(0,1);
+        $httpProvider.interceptors.splice(0,1); //Remove uma posição do Arrey.
+        $httpProvider.interceptors.push('oauthFixInterceptor');
 
         $routeProvider
             .when('/login', {
                 templateUrl: 'build/views/login.html',
                 controller: 'LoginController'
+            })
+            .when('/logout', {
+                resolve: {
+                    logout: ['$location', 'OAuthToken', function ($location, OAuthToken) {
+                        OAuthToken.removeToken();
+                        return $location.path('/login');
+                    }]
+                }
             })
             .when('/home', {
                 templateUrl: 'build/views/home.html',
@@ -190,26 +202,50 @@ app.config([
 
     }]);
 
-app.run(['$rootScope', '$location', '$window', 'OAuth', function ($rootScope, $location, $window, OAuth) {
+app.run(['$rootScope', '$location', '$http', '$uibModal', 'httpBuffer', 'OAuth',
+    function ($rootScope, $location, $http, $uibModal, httpBuffer, OAuth) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-        if (next.$$route.originalPath != '/login'){
-            if (!OAuth.isAuthenticated()){
-                $location.path('/login');
+        if (next.$$route.originalPath != '/login') {
+            if (!OAuth.isAuthenticated()) {
+                $location.path('login');
             }
         }
     });
-    $rootScope.$on('oauth:error', function (event, rejection) {
+    $rootScope.$on('oauth:error', function (event, data) {
         // Ignore `invalid_grant` error - should be catched on `LoginController`.
-        if ('invalid_grant' === rejection.data.error) {
+        if ('invalid_grant' === data.rejection.data.error) {
             return;
         }
 
         // Refresh token when a `invalid_token` error occurs.
-        if ('invalid_token' === rejection.data.error) {
-            return OAuth.getRefreshToken();
+        if ('access_denied' === data.rejection.data.error) {
+            httpBuffer.append(data.rejection.config, data.deffered);
+            if (!$rootScope.loginModalOpened){
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'build/views/template/login-modal.html',
+                    controller: 'LoginModalController'
+                });
+                
+                $rootScope.loginModalOpened = true;
+            }
+            return;
+            
+            // if (!$rootScope.isRefreshingToken) {
+            //     $rootScope.isRefreshingToken = true;
+            //     return OAuth.getRefreshToken().then(function (response) {
+            //         $rootScope.isRefreshingToken = false;
+            //         return $http(data.rejection.config).then(function (response) {
+            //             return data.deferred.resolve(response);
+            //         })
+            //     });
+            // }else {
+            //     return $http(data.rejection.config).then(function (response) {
+            //         return data.deferred.resolve(response);
+            //     })
+            // }
         }
 
         // Redirect to `/login` with the `error_reason`.
-        return $window.location.href = '/login?error_reason=' + rejection.data.error;
+        return $location.path('login');
     });
 }]);

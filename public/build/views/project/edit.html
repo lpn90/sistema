@@ -23,7 +23,8 @@
                             <label class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <textarea class="form-control" rows="4" name="description"                                    ng-model="project.description" required></textarea>
+                                <textarea class="form-control" rows="4" name="description"
+                                          ng-model="project.description" required></textarea>
                                 <div ng-messages="form.description.$error" class="help-block"
                                      ng-show="form.description.$touched">
                                     <div ng-message="required">Campo Obrigatóio!</div>
@@ -36,20 +37,6 @@
                             <label class="col-md-4 control-label">Client</label>
 
                             <div class="col-md-6">
-
-                                <select class="form-control" ng-options="o.id as o.name for o in clients"
-                                        ng-model="project.client_id"
-                                        name="client_id" required>
-                                    <option value="">( Selecione um Client)</option>
-                                </select>
-
-                                <div ng-messages="form.client_id.$error" class="help-block"
-                                     ng-show="form.client_id.$touched">
-                                    <div ng-message="required">Campo Obrigatóio!</div>
-                                </div>
-                            </div>
-
-                           <!-- <div class="col-md-6">
                                 <input type="text" name="client_id" ng-model="clientSelected" class="form-control"
                                        uib-typeahead="o as o.name for o in getClients($viewValue)|limitTo:10"
                                        typeahead-input-formatter="formatName($model)"
@@ -61,7 +48,7 @@
                                     <div ng-message="required">Campo Obrigatóio!</div>
                                     <div ng-message="editable">Selecione um Client válido!</div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
 
                         <div class="form-group"
@@ -70,7 +57,8 @@
 
                             <div class="col-md-6">
                                 <p class="input-group">
-                                    <input type="text" name="due_date" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+                                    <input type="text" name="due_date" class="form-control"
+                                           uib-datepicker-popup="dd/MM/yyyy"
                                            ng-model="project.due_date" is-open="due_date.status.opened"
                                            close-text="Close" required
                                     />
@@ -93,7 +81,8 @@
                             <label class="col-md-4 control-label">Progress (%)</label>
 
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="progress" ng-model="project.progress" min="0" max="100" required>
+                                <input type="number" class="form-control" name="progress" ng-model="project.progress"
+                                       min="0" max="100" required>
                                 <div ng-messages="form.progress.$error" class="help-block"
                                      ng-show="form.progress.$touched">
                                     <div ng-message="required">Campo Obrigatóio!</div>
