@@ -25,7 +25,8 @@ class ClientController extends Controller
 
     /**
      * ClientController constructor.
-     * @param $repository
+     * @param ClientRepository $repository
+     * @param ClientService $service
      */
     public function __construct(ClientRepository $repository, ClientService $service)
     {
@@ -37,11 +38,13 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->repository->all();
+        $limit = $request->query->get('limit', 15);
+        return $this->repository->paginate($limit);
     }
 
     /**

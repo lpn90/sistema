@@ -13,19 +13,16 @@ use League\Fractal\TransformerAbstract;
 
 class ClientTransformer extends TransformerAbstract
 {
-    /**
-    * Class ClientTransformer
-    * @package Sistema\Transformers
-    * Transform the \Client entity
-    * @param Client $client
-    *
-    * @return array
-    */
 
+    protected $defaultIncludes = ['projects'];
+    
+    /**
+     * @param Client $client
+     * @return array
+     */
     public function transform(Client $client)
     {
         return [
-
             'id' => (int)$client->id,
             'name' => $client->name,
             'responsible' => $client->responsible,
@@ -34,5 +31,12 @@ class ClientTransformer extends TransformerAbstract
             'address' => $client->address,
             'obs' => $client->obs,
         ];
+    }
+
+    public function includeProjects(Client $client)
+    {
+        $transformer = new ProjectTransformer();
+        $transformer->setDefaultIncludes([]);
+        return $this->collection($client->projects, $transformer);
     }
 }
