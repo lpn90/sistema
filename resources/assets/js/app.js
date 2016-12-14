@@ -261,13 +261,18 @@ app.run(['$rootScope', '$location', '$http', '$uibModal', 'httpBuffer', 'OAuth',
 
             // Refresh token when a `invalid_token` error occurs.
             if ('access_denied' === data.rejection.data.error) {
-                httpBuffer.append(data.rejection.config, data.deffered);
+                if (!$rootScope.isRefreshingToken) {
+                    $rootScope.isRefreshingToken = true;
+                    return OAuth.getRefreshToken();
+                }
+                httpBuffer.append(data.rejection.config, data.deferred);
                 if (!$rootScope.loginModalOpened) {
                     var modalInstance = $uibModal.open({
                         templateUrl: 'build/views/templates/login-modal.html',
                         controller: 'LoginModalController'
                     });
 
+                    $rootScope.isRefreshingToken = false;
                     $rootScope.loginModalOpened = true;
                 }
                 return;
