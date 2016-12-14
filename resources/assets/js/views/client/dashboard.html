@@ -104,7 +104,7 @@
                                     <tr>
                                         <th>{{ o.name }}</th>
                                         <th>{{ o.due_date | dateBr }}</th>
-                                        <th>{{ o.status}}</th>
+                                        <th>{{ getStatus(o.status) }}</th>
                                     </tr>
                                     </tbody>
                                 </table>
