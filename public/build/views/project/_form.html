@@ -3,7 +3,8 @@
 
     <div class="col-md-6">
         <input type="text" class="form-control" name="name" ng-model="project.name" required>
-        <div ng-messages="form.name.$error" class="help-block" ng-show="form.name.$touched">
+        <div ng-messages="form.name.$error" class="help-block"
+             ng-show="form.name.$touched  && form.name.$invalid">
             <div ng-message="required">Campo Obrigatóio!</div>
         </div>
     </div>
@@ -14,10 +15,11 @@
     <label class="col-md-4 control-label">Description</label>
 
     <div class="col-md-6">
-                                <textarea class="form-control" rows="4" name="description"
-                                          ng-model="project.description" required></textarea>
+         <textarea class="form-control" rows="4" name="description" ng-model="project.description" required>
+
+         </textarea>
         <div ng-messages="form.description.$error" class="help-block"
-             ng-show="form.description.$touched">
+             ng-show="form.description.$touched && form.description.$invalid">
             <div ng-message="required">Campo Obrigatóio!</div>
         </div>
     </div>
@@ -35,7 +37,7 @@
                typeahead-editable="false" required
         />
         <div ng-messages="form.client_id.$error" class="help-block"
-             ng-show="form.client_id.$touched">
+             ng-show="form.client_id.$touched && form.client_id.$invalid">
             <div ng-message="required">Campo Obrigatóio!</div>
             <div ng-message="editable">Selecione um Client válido!</div>
         </div>
@@ -53,14 +55,14 @@
                    ng-model="project.due_date" is-open="due_date.status.opened"
                    close-text="Close" required
             />
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="open($event)">
-                                            <i class="glyphicon glyphicon-calendar"></i>
-                                        </button>
-                                    </span>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+            </span>
         </p>
         <div ng-messages="form.due_date.$error" class="help-block"
-             ng-show="form.due_date.$touched">
+             ng-show="form.due_date.$touched && form.due_date.$invalid">
             <div ng-message="required">Campo Obrigatóio!</div>
             <div ng-message="date">Data inválida!</div>
         </div>
@@ -75,7 +77,7 @@
         <input type="number" class="form-control" name="progress" ng-model="project.progress"
                min="0" max="100" required>
         <div ng-messages="form.progress.$error" class="help-block"
-             ng-show="form.progress.$touched">
+             ng-show="form.progress.$touched && form.progress.$invalid">
             <div ng-message="required">Campo Obrigatóio!</div>
             <div ng-message="min">Valor mínimo aceitável é 0.</div>
             <div ng-message="max">Valor máximo aceitável é 100.</div>
@@ -93,7 +95,7 @@
             <option value="">( Selecione o Status )</option>
         </select>
         <div ng-messages="form.status.$error" class="help-block"
-             ng-show="form.status.$touched">
+             ng-show="form.status.$touched && form.status.$invalid">
             <div ng-message="required">Campo Obrigatóio!</div>
         </div>
     </div>

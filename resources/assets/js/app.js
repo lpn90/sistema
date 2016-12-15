@@ -8,7 +8,7 @@ var app = angular.module('app', [
     'mgcrea.ngStrap.navbar', 'ui.bootstrap.dropdown', 'pusher-angular', 'ui-notification'
 ]);
 
-angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);
+angular.module('app.controllers', ['ngMessages']);
 angular.module('app.filters', []);
 angular.module('app.directives', []);
 angular.module('app.services', ['ngResource']);
@@ -165,11 +165,6 @@ app.config([
             .when('/project/:id/note/:idNote', {
                 templateUrl: 'build/views/project-note/listNote.html',
                 controller: 'ProjectNoteListNoteController',
-                title: 'Project Notes'
-            })
-            .when('/project/:id/note/:idNote/show', {
-                templateUrl: 'build/views/project-note/show.html',
-                controller: 'ProjectNoteShowController',
                 title: 'Project Notes'
             })
             .when('/project/:id/note/:idNote/edit', {

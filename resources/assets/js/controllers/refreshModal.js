@@ -1,7 +1,9 @@
 angular.module('app.controllers')
     .controller('RefreshModalController',
-        ['$rootScope', '$scope', '$location', '$uibModalInstance','authService', 'OAuth', 'OAuthToken', 'User',
-            function ($rootScope, $scope, $location, $uibModalInstance, authService, OAuth, OAuthToken, User) {
+        ['$rootScope', '$scope', '$location', '$interval', '$uibModalInstance',
+            'authService', 'OAuth', 'OAuthToken', 'User',
+            function ($rootScope, $scope, $location, $interval, $uibModalInstance,
+                      authService, OAuth, OAuthToken, User) {
 
                 $scope.$on('event::auth-loginConfirmed', function () {
                     $rootScope.loginModalOpened = false;
@@ -23,8 +25,10 @@ angular.module('app.controllers')
                 };
 
                 OAuth.getRefreshToken().then(function () {
-                    authService.loginConfirmed();
-                    $uibModalInstance.close();
+                    $interval(function () {
+                        authService.loginConfirmed();
+                        $uibModalInstance.close();
+                    }, 6000);
                 }, function (data) {
                     $scope.cancel();
                 });

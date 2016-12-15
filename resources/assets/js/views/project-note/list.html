@@ -17,10 +17,13 @@
                             <th>{{ o.title }}</th>
                             <th>{{ o.note | limitTo: 40 }} ...</th>
                             <th>
-                                <a ng-href="#/project/{{ o.project_id }}/notes/{{ o.id }}/edit" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar">
+                                <a ng-href="#/project/{{ o.project_id }}/notes/{{ o.id }}/edit" class="btn btn-success btn-xs" title="Editar">
                                     <i class="fa fa-edit"></i>
-                                </a>  <a ng-href="#/project/{{ o.project_id }}/notes/{{ o.id }}/remove" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+                                </a>  <a ng-href="#/project/{{ o.project_id }}/notes/{{ o.id }}/remove" class="btn btn-danger btn-xs" title="Excluir">
                                 <i class="fa fa-minus-circle"></i>
+                                </a>
+                                <a href="javascript:void(0)" class="btn btn-info btn-xs" title="Imprimir" ng-click="print(o)">
+                                    <i class="fa fa-print"></i>
                                 </a>
                             </th>
                         </tr>

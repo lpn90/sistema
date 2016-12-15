@@ -5,16 +5,21 @@ angular.module('app.directives')
                 restrict: 'E',
                 templateUrl: appConfig.baseUrl + '/build/views/templates/projectFileDownload.html',
                 link: function (scope, element, attr) {
-                    var anchor = element.children()[0];
+                    var img = element.children()[0];
+                    var anchor = element.children()[1];
+
+                    scope.icoDirDefault = 'build/images/icons/default.png';
+                    scope.setSrcImg(img);
+
                     scope.$on('salvar-arquivo', function (event, data) {
-                        $(anchor).removeClass('disable');
-                        $(anchor).html('<i class="fa fa-download"></i>');
-                        blobUtil.base64StringToBlob(data.file).then(function (blob) {
-                            $(anchor).attr({
-                                href: $window.URL.createObjectURL(blob, data.mime_type),
-                                download: data.name
+                            $(anchor).removeClass('disabled');
+                            $(anchor).html('<i class="fa fa-download"></i>');;
+                            blobUtil.base64StringToBlob(data.file).then(function(blob){
+                                $(anchor).attr({
+                                    href: $window.URL.createObjectURL(blob, data.mime_type),
+                                    download: data.name
+                                });
                             });
-                        });
 
                         $timeout(function () {
                             scope.downloadFile = function () {
@@ -27,7 +32,7 @@ angular.module('app.directives')
                     function ($scope, $element, $attrs) {
                         $scope.downloadFile = function () {
                             var anchor = $element.children()[0];
-                            $(anchor).addClass('disable');
+                            $(anchor).addClass('disabled');
                             $(anchor).html('<i class="fa fa-spinner"></i>');
                             ProjectFile.download({id: $attrs.idProject, idFile: $attrs.idFile}, function (data) {
                                 $scope.$emit('salvar-arquivo', data);
