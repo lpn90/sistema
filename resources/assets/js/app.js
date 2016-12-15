@@ -5,7 +5,7 @@ var app = angular.module('app', [
     'ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters', 'app.directives',
     'ui.bootstrap.tpls', 'ui.bootstrap.typeahead', 'ui.bootstrap.datepicker', 'ui.bootstrap.modal',
     'ngFileUpload', 'http-auth-interceptor', 'angularUtils.directives.dirPagination',
-    'mgcrea.ngStrap.navbar', 'ui.bootstrap.dropdown'
+    'mgcrea.ngStrap.navbar', 'ui.bootstrap.dropdown', 'pusher-angular', 'ui-notification'
 ]);
 
 angular.module('app.controllers', ['angular-oauth2', 'ngMessages']);
@@ -16,6 +16,7 @@ angular.module('app.services', ['ngResource']);
 app.provider('appConfig', ['$httpParamSerializerProvider', function ($httpParamSerializerProvider) {
     var config = {
         baseUrl: 'http://sistema.local',
+        pusherKey: 'db4fc0f49c723ada4a8f',
         project: {
             status: [
                 {value: 1, label: 'Não Iniciado'},
@@ -239,14 +240,63 @@ app.config([
 
     }]);
 
-app.run(['$rootScope', '$location', '$http', '$uibModal', 'httpBuffer', 'OAuth',
-    function ($rootScope, $location, $http, $uibModal, httpBuffer, OAuth) {
+app.run(['$rootScope', '$location', '$http', '$uibModal', '$cookies', '$pusher', '$filter', 'httpBuffer', 'OAuth', 'appConfig', 'Notification',
+    function ($rootScope, $location, $http, $uibModal, $cookies, $pusher, $filter, httpBuffer, OAuth, appConfig, Notification) {
+
+        $rootScope.$on('pusher-build', function (event, data) {
+            if (data.next.$$route.originalPath != '/login') {
+                if (OAuth.isAuthenticated()) {
+                    if (!window.client) {
+                        window.client = new Pusher(appConfig.pusherKey);
+                        var pusher = $pusher(window.client);
+                        var channel = pusher.subscribe('user.' + $cookies.getObject('user').id);
+                        channel.bind('Sistema\\Events\\TaskWasIncluded',
+                            function (data) {
+                                var name = data.task.name;
+                                var start_date = data.task.start_date;
+                                var msgm = "Tarefa '" + name + "' foi incluída!";
+
+                                if (start_date != null) {
+                                    msgm += "<br> Data de início: " + $filter('dateBr')(start_date);
+                                }
+
+                                Notification.success(msgm);
+                            }
+                        );
+                        channel.bind('Sistema\\Events\\TaskChanged',
+                            function (data) {
+                                var name = data.task.name;
+                                var start_date = data.task.start_date;
+                                var msgm = "Tarefa '" + name + "' foi alterada!";
+
+                                if (data.task.status == 2) {
+                                    msgm = "Tarefa '" + name + "' foi concluída!";
+                                }
+                                Notification.success(msgm);
+                            }
+                        );
+                    }
+                }
+            }
+        });
+
+        $rootScope.$on('pusher-destroy', function (event, data) {
+            if (data.next.$$route.originalPath == '/login') {
+                if (window.client) {
+                    window.client.disconnect();
+                    window.client = null;
+                }
+            }
+        });
+
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if (next.$$route.originalPath != '/login') {
                 if (!OAuth.isAuthenticated()) {
                     $location.path('login');
                 }
             }
+            $rootScope.$emit('pusher-build', {next: next});
+            $rootScope.$emit('pusher-destroy', {next: next});
         });
 
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
@@ -268,7 +318,7 @@ app.run(['$rootScope', '$location', '$http', '$uibModal', 'httpBuffer', 'OAuth',
                         templateUrl: 'build/views/templates/refreshModal.html',
                         controller: 'RefreshModalController'
                     });
-                    
+
                     $rootScope.loginModalOpened = true;
                 }
                 return;
