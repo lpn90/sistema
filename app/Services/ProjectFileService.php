@@ -43,8 +43,11 @@ class ProjectFileService
 
     /**
      * ProjectFileService constructor.
-     * @param $repository
-     * @param $validator
+     * @param ProjectFileRepository $repository
+     * @param ProjectRepository $projectRepository
+     * @param ProjectFileValidator $validator
+     * @param Storage $storage
+     * @param Filesystem $filesystem
      */
     public function __construct(ProjectFileRepository $repository, ProjectRepository $projectRepository, ProjectFileValidator $validator, Storage $storage, Filesystem $filesystem)
     {

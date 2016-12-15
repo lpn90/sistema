@@ -50,28 +50,36 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return $this->service->create($request->all());
+        try {
+            return $this->service->create($request->all());
+
+        } catch (ValidatorException $e) {
+            return Response::json ([
+                'error' => true,
+                'message' => $e->getMessageBag()
+            ], 400);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        try{
+        try {
             return $this->repository->find($id);
-        }catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'message'=>'Cliente não encontrado.'];
+        } catch (ModelNotFoundException $e) {
+            return ['error' => true, 'message' => 'Cliente não encontrado.'];
         } catch (Exception $e) {
-            return ['error'=>true, 'message'=>'Ocorreu algum erro ao pesquisar o cliente.'];
+            return ['error' => true, 'message' => 'Ocorreu algum erro ao pesquisar o cliente.'];
         }
 
     }
@@ -79,41 +87,61 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        try{
-            return $this->service->update($request->all(),$id);
-        } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'message'=>'Cliente não encontrado.'];
-        } catch (Exception $e) {
-            return ['error'=>true, 'message'=>'Ocorreu algum erro ao atualizar o cliente.'];
-        }
+        try {
+            return $this->service->update($request->all(), $id);
 
+        } catch (ValidatorException $e) {
+            return Response::json ([
+                'error' => true,
+                'message' => $e->getMessageBag()
+            ], 400);
+        }catch (ModelNotFoundException $e) {
+            return Response::json ([
+                'error' => true,
+                'message' => 'Cliente não encontrado.'
+            ], 400);
+        } catch (Exception $e) {
+            return  Response::json ([
+                'error' => true,
+                'message' => 'Ocorreu algum erro ao atualizar o cliente.'
+            ], 400);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         try {
-            if ($this->repository->find($id)){
+            if ($this->repository->find($id)) {
                 $this->repository->delete($id);
             }
-            return ['error'=>false, 'message'=>'Cliente deletado com sucesso!'];
+            return response("", 404);
         } catch (QueryException $e) {
-            return ['error'=>true, 'message'=>'Cliente não pode ser apagado pois existe um ou mais projetos vinculados a ele.'];
+            return Response::json ([
+                'error' => true,
+                'message' => 'Cliente não pode ser apagado pois existe um ou mais projetos vinculados a ele.'
+            ], 400);
         } catch (ModelNotFoundException $e) {
-            return ['error'=>true, 'message'=>'Cliente não encontrado.'];
+            return Response::json ([
+                'error' => true,
+                'message' => 'Cliente não encontrado.'
+            ], 400);
         } catch (Exception $e) {
-            return ['error'=>true, 'message'=>'Ocorreu algum erro ao excluir o cliente.'];
+            return Response::json ([
+                'error' => true,
+                'message' => 'Ocorreu algum erro ao excluir o cliente.'
+            ], 400);
         }
     }
 }

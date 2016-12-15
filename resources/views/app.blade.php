@@ -53,6 +53,7 @@
     <script src="{{ asset('build/js/vendor/pusher.min.js') }}"></script>
     <script src="{{ asset('build/js/vendor/pusher-angular.min.js') }}"></script>
     <script src="{{ asset('build/js/vendor/angular-ui-notification.min.js') }}"></script>
+    <script src="{{ asset('build/js/vendor/blob-util.min.js') }}"></script>
 
     <script src="{{ asset('build/js/app.js') }}"></script>
 
@@ -74,6 +75,9 @@
     <script src="{{ asset('build/js/controllers/project/projectNew.js') }}"></script>
     <script src="{{ asset('build/js/controllers/project/projectEdit.js') }}"></script>
     <script src="{{ asset('build/js/controllers/project/projectRemove.js') }}"></script>
+
+    <script src="{{ asset('build/js/controllers/project/projectsMemberDashboard.js') }}"></script>
+    <script src="{{ asset('build/js/controllers/project/projectsMemberList.js') }}"></script>
 
     <script src="{{ asset('build/js/controllers/project-note/projectNoteList.js') }}"></script>
     <script src="{{ asset('build/js/controllers/project-note/projectNoteListNote.js') }}"></script>

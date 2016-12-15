@@ -1,7 +1,7 @@
 angular.module('app.controllers')
     .controller('ProjectNewController',
-        ['$scope', '$location', 'Project', 'Client', 'appConfig', '$cookies',
-            function ($scope, $location, Project, Client, appConfig, $cookies) {
+        ['$scope', '$location', '$cookies', '$q', 'Project', 'Client', 'appConfig',
+            function ($scope, $location, $cookies, $q, Project, Client, appConfig) {
                 $scope.project = new Project();
                 $scope.status = appConfig.project.status;
 
@@ -32,14 +32,19 @@ angular.module('app.controllers')
                 };
 
                 $scope.getClients = function (name) {
-                    return Client.query({
+                    var deffered = $q.defer();
+                    Client.query({
                         search: name,
-                        searchFields: 'name:like',
-                    }).$promise;
+                        searchFields: 'name:like'
+                    }, function (data) {
+                        deffered.resolve(data.data);
+                    }, function (error) {
+                        deffered.reject(error);
+                    });
+                    return deffered.promise;
                 };
 
-                $scope.selectClient = function (item){
+                $scope.selectClient = function (item) {
                     $scope.project.client_id = item.id;
                 };
-
             }]);

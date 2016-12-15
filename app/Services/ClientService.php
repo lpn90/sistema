@@ -37,30 +37,20 @@ class ClientService
 
     public function create(array $data)
     {
+        $this->validator->with($data)->passesOrFail();
 
-        try{
-            $this->validator->with($data)->passesOrFail();
-
-            return $this->repository->create($data);
-
-        }catch (ValidatorException $e){
-            return [
-                'error' => true,
-                'message' => $e->getMessageBag()
-            ];
-        }
-
+        return $this->repository->create($data);
     }
 
     public function update(array $data, $id)
     {
 
-        try{
+        try {
             $this->validator->with($data)->passesOrFail();
 
             return $this->repository->update($data, $id);
 
-        }catch (ValidatorException $e){
+        } catch (ValidatorException $e) {
             return [
                 'error' => true,
                 'message' => $e->getMessageBag()

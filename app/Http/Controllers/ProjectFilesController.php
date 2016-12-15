@@ -22,6 +22,7 @@ class ProjectFilesController extends Controller
      */
     private $service;
 
+
     public function __construct(ProjectFileRepository $repository, ProjectFileService $service)
     {
         $this->repository = $repository;
@@ -62,13 +63,14 @@ class ProjectFilesController extends Controller
 
     public function showFile($id, $fileId)
     {
-        $filePath = $this->service->getFilePath($fileId);
+        $filePath = $this->service->getFilePath($id);
         $fileContent = file_get_contents($filePath);
         $file64 = base64_encode($fileContent);
         return [
             'file' => $file64,
             'size' => filesize($filePath),
-            'name' => $this->service->getFileName($fileId)
+            'name' => $this->service->getFileName($id),
+            'mime_type' => $this->service->getMimeType($id)
         ];
     }
 

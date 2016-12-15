@@ -8,7 +8,8 @@
 
         <div class="col-md-6">
             <input type="text" class="form-control" name="username" ng-model="user.username" required>
-            <div ng-messages="form.username.$error" class="help-block" ng-show="form.username.$touched">
+            <div ng-messages="form.username.$error" class="help-block"
+                 ng-show="form.username.$touched && form.username.$invalid">
                 <div ng-message="required">Campo Obrigatóio!</div>
             </div>
         </div>
@@ -19,7 +20,8 @@
 
         <div class="col-md-6">
             <input type="password" class="form-control" name="password" ng-model="user.password" required>
-            <div ng-messages="form.password.$error" class="help-block" ng-show="form.password.$touched">
+            <div ng-messages="form.password.$error" class="help-block"
+                 ng-show="form.password.$touched && form.password.$invalid">
                 <div ng-message="required">Campo Obrigatóio!</div>
             </div>
         </div>

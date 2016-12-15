@@ -1,6 +1,6 @@
 angular.module('app.directives')
     .directive('projectFileDownload',
-        ['$timeout', 'appConfig', 'ProjectFile', function ($timeout, appConfig, ProjectFile) {
+        ['$timeout', '$window', 'appConfig', 'ProjectFile', function ($timeout, $window, appConfig, ProjectFile) {
             return {
                 restrict: 'E',
                 templateUrl: appConfig.baseUrl + '/build/views/templates/projectFileDownload.html',
@@ -9,28 +9,44 @@ angular.module('app.directives')
                     scope.$on('salvar-arquivo', function (event, data) {
                         $(anchor).removeClass('disable');
                         $(anchor).html('<i class="fa fa-download"></i>');
-                        $(anchor).attr({
-                            href: 'data:application-octet-stream;base64,' + data.file,
-                            download: data.name
+                        blobUtil.base64StringToBlob(data.file).then(function (blob) {
+                            $(anchor).attr({
+                                href: $window.URL.createObjectURL(blob, data.mime_type),
+                                download: data.name
+                            });
                         });
+
                         $timeout(function () {
                             scope.downloadFile = function () {
-
-                            }
+                            };
                             $(anchor)[0].click();
-                        });
+                        }, 0);
                     });
                 },
-                controller: ['$scope', '$element', '$attrs', 
+                controller: ['$scope', '$element', '$attrs',
                     function ($scope, $element, $attrs) {
-                    $scope.downloadFile = function () {
-                        var anchor = $element.children()[0];
-                        $(anchor).addClass('disable');
-                        $(anchor).html('<i class="fa fa-spinner"></i>');
-                        ProjectFile.download({id: $attrs.idProject, idFile: $attrs.idFile}, function (data) {
-                            $scope.$emit('salvar-arquivo', data);
-                        });
-                    };
-                }]
+                        $scope.downloadFile = function () {
+                            var anchor = $element.children()[0];
+                            $(anchor).addClass('disable');
+                            $(anchor).html('<i class="fa fa-spinner"></i>');
+                            ProjectFile.download({id: $attrs.idProject, idFile: $attrs.idFile}, function (data) {
+                                $scope.$emit('salvar-arquivo', data);
+                            });
+                        };
+
+                        $scope.setSrcImg = function (img) {
+                            ProjectFile.get({id: $attrs.idProject, idFile: $attrs.idFile}, function (data) {
+                                var icoDir = 'build/images/icons/ico-'+data.extension+'.png';
+
+                                $.get(icoDir, function() {
+                                    $(img).attr({src: icoDir});
+                                }).fail(function() {
+                                    $(img).attr({src: $scope.icoDirDefault});
+                                });
+                            });
+
+                        };
+
+                    }]
             };
         }]);

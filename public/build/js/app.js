@@ -122,6 +122,16 @@ app.config([
                 controller: 'ProjectDashboardController',
                 title: 'Projects'
             })
+            .when('/projects-member', {
+                templateUrl: 'build/views/project/list.html',
+                controller: 'ProjectsMemberListController',
+                title: 'Projetos Compartilhados'
+            })
+            .when('/projects-member/dashboard', {
+                templateUrl: 'build/views/project/dashboard-projects-member.html',
+                controller: 'ProjectsMemberDashboardController',
+                title: 'Projetos Compartilhados'
+            })
             .when('/projects/', {
                 templateUrl: 'build/views/project/list.html',
                 controller: 'ProjectListController',
