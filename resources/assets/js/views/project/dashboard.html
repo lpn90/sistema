@@ -104,9 +104,11 @@
                                 <div role="tabpanel" class="tab-pane" id="arquivos">
                                     <ul class="list-group">
                                         <li ng-repeat="o in project.files.data" class="list-group-item">
-                                            <div class="col-md-9">
-                                                <h5>{{o.name}}</h5>
-                                                <p>{{o.description}}</p>
+                                            <div class="col-md-4">
+                                                {{o.name}}
+                                            </div>
+                                            <div class="col-md-7">
+                                                {{ o.description }}
                                             </div>
                                             <project-file-download
                                                     id-project="{{o.project_id}}"

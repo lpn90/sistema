@@ -2,34 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f9dc264-8697-4099-a610-bfe780643879" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/views/templates/projectNotePrint.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/build/js/controllers/project-note/projectNoteShow.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/build/views/project-note/show.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/views/project-note/show.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/build/views/project-file/_form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/views/project-file/_form.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/oauth2.php" afterPath="$PROJECT_DIR$/config/oauth2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/app.js" afterPath="$PROJECT_DIR$/public/build/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/controllers/project-note/projectNoteList.js" afterPath="$PROJECT_DIR$/public/build/js/controllers/project-note/projectNoteList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/controllers/refreshModal.js" afterPath="$PROJECT_DIR$/public/build/js/controllers/refreshModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/directives/projectFileDownload.js" afterPath="$PROJECT_DIR$/public/build/js/directives/projectFileDownload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/client/edit.html" afterPath="$PROJECT_DIR$/public/build/views/client/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/client/new.html" afterPath="$PROJECT_DIR$/public/build/views/client/new.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/controllers/project-file/projectFileList.js" afterPath="$PROJECT_DIR$/public/build/js/controllers/project-file/projectFileList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/js/controllers/project-file/projectFileNew.js" afterPath="$PROJECT_DIR$/public/build/js/controllers/project-file/projectFileNew.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-file/edit.html" afterPath="$PROJECT_DIR$/public/build/views/project-file/edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-file/list.html" afterPath="$PROJECT_DIR$/public/build/views/project-file/list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-file/new.html" afterPath="$PROJECT_DIR$/public/build/views/project-file/new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-note/edit.html" afterPath="$PROJECT_DIR$/public/build/views/project-note/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-note/list.html" afterPath="$PROJECT_DIR$/public/build/views/project-note/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-note/new.html" afterPath="$PROJECT_DIR$/public/build/views/project-note/new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-task/edit.html" afterPath="$PROJECT_DIR$/public/build/views/project-task/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project-task/new.html" afterPath="$PROJECT_DIR$/public/build/views/project-task/new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project/_form.html" afterPath="$PROJECT_DIR$/public/build/views/project/_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/templates/form-login.html" afterPath="$PROJECT_DIR$/public/build/views/templates/form-login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app.js" afterPath="$PROJECT_DIR$/resources/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/project-note/projectNoteList.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/project-note/projectNoteList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/refreshModal.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/refreshModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/views/project-note/list.html" afterPath="$PROJECT_DIR$/resources/assets/js/views/project-note/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/project-note/projectNoteShow.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/project-note/projectNotePrint.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/views/project/dashboard.html" afterPath="$PROJECT_DIR$/public/build/views/project/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileList.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileNew.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileNew.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/views/project-file/edit.html" afterPath="$PROJECT_DIR$/resources/assets/js/views/project-file/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/views/project-file/list.html" afterPath="$PROJECT_DIR$/resources/assets/js/views/project-file/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/views/project-file/new.html" afterPath="$PROJECT_DIR$/resources/assets/js/views/project-file/new.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/views/project/dashboard.html" afterPath="$PROJECT_DIR$/resources/assets/js/views/project/dashboard.html" />
     </list>
     <ignored path="sistema.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,7 +44,60 @@
     <favorites_list name="sistema" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projectFileNew.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileNew.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project/dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="110" column="48" selection-start-line="110" selection-start-column="48" selection-end-line="110" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="69" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projectFileList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,9 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/assets/js/views/project/dashboard.html" />
-        <option value="$PROJECT_DIR$/resources/assets/js/views/templates/refreshModal.html" />
-        <option value="$PROJECT_DIR$/resources/assets/js/views/client/dashboard.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/client/clientDashboard.js" />
         <option value="$PROJECT_DIR$/config/broadcasting.php" />
         <option value="$PROJECT_DIR$/app/Events/TaskWashIncluded.php" />
@@ -98,17 +135,13 @@
         <option value="$PROJECT_DIR$/app/Services/ProjectFileService.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/services/projectFile.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/show.html" />
-        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/list.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/directives/projectFileDownload.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/client/_form.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/client/edit.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/client/new.html" />
-        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/_form.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project/new.html" />
-        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/edit.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project/edit.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project/_form.html" />
-        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/new.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project-note/edit.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project-note/new.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/views/project-note/_form.html" />
@@ -124,6 +157,13 @@
         <option value="$PROJECT_DIR$/resources/assets/js/views/templates/projectNotePrint.html" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/project-note/projectNoteList.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/_form.html" />
+        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/edit.html" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileList.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/list.html" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileNew.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/views/project-file/new.html" />
+        <option value="$PROJECT_DIR$/resources/assets/js/views/project/dashboard.html" />
       </list>
     </option>
   </component>
@@ -173,8 +213,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -183,13 +221,217 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../estoque" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/app/Services/ClientService.php" />
@@ -197,17 +439,17 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\html\sistema" />
-      <recent name="H:\html\sistema\app\Entities" />
-      <recent name="H:\html\sistema\app\Models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\html\sistema\resources\assets\js\views\project-file" />
       <recent name="H:\html\sistema\resources\assets\js\views\client" />
       <recent name="H:\html\sistema\resources\assets\js\directives" />
       <recent name="H:\html\sistema\resources\assets\js\views\project" />
       <recent name="H:\html\sistema\resources\assets\js\controllers\project" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\html\sistema" />
+      <recent name="H:\html\sistema\app\Entities" />
+      <recent name="H:\html\sistema\app\Models" />
     </key>
   </component>
   <component name="RunManager">
@@ -305,18 +547,20 @@
       <workItem from="1481761719554" duration="2166000" />
       <workItem from="1481800443421" duration="13088000" />
       <workItem from="1481815390294" duration="665000" />
+      <workItem from="1481886447481" duration="2483000" />
+      <workItem from="1481894402839" duration="1811000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="327061000" />
+    <option name="totallyTimeSpent" value="331355000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23748103" sideWeight="0.5068259" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31240544" sideWeight="0.49317408" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3214826" sideWeight="0.49317408" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277311" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -353,41 +597,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/project-task/projectTaskList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/TaskWasIncluded.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -458,31 +667,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/services/projectFile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/show.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/directives/projectFileDownload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -507,13 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project/new.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -532,20 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
           <caret line="108" column="6" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/new.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="140" selection-start-line="25" selection-start-column="140" selection-end-line="25" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="86" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="86" />
         </state>
       </provider>
     </entry>
@@ -699,8 +866,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="0">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/client/clientEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/build/js/controllers/project-file/projectFileNew.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/services/projectFile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/directives/projectFileDownload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" selection-start-line="5" selection-start-column="19" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project-file/new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/project-file/projectFileNew.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/views/project/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="110" column="48" selection-start-line="110" selection-start-column="48" selection-end-line="110" selection-end-column="48" />
           <folding />
         </state>
       </provider>
